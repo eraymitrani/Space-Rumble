@@ -12,14 +12,14 @@ public class movement : MonoBehaviour {
         Left
     }
 
-    private bool canJump = true;
+    public bool canJump = true;
     private Facing direction;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     public float moveSpeed = 2.0f, jumpForce = 300f;
 	// Use this for initialization
 	void Start ()
 	{
-	    rb = GetComponent<Rigidbody2D>();
+	    rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -37,18 +37,20 @@ public class movement : MonoBehaviour {
         rb.velocity = new Vector2(input * moveSpeed, 0);
 	    if (Input.GetKeyDown(KeyCode.Space) && canJump) 
 	    {
+	        rb.velocity += new Vector3(0, jumpForce, 0);
 	        canJump = false;
-	        rb.velocity += new Vector2(0, jumpForce);
-	    }
-	}
 
-    void OnCollisionEnter2D(Collision2D other)
+	    }
+    }
+
+    void OnCollisionEnter(Collision other)
     {
-        //if (other.collider.tag == "graound")
-        //{
-            
-        //}
-        canJump = true;
+        if (other.collider.tag == "ground")
+        {
+            canJump = true;
+
+        }
+        Debug.Log(other.collider.tag);
     }
  
 }
