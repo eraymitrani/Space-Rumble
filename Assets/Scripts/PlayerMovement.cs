@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		getInput ();
 
-		if (InputManager.ActiveDevice.Action1.WasPressed && can_jump) {
+		if ((InputManager.ActiveDevice.Action1.WasPressed || Input.GetKeyDown(KeyCode.Space)) && can_jump) {
 			should_jump = 1;	//go up
-		} else if (InputManager.ActiveDevice.Action1.WasReleased) {
+		} else if (InputManager.ActiveDevice.Action1.WasReleased || Input.GetKeyUp(KeyCode.Space)) {
 			should_jump = 2; 	//go down
 		} else {
 			should_jump = 0;
@@ -58,8 +58,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
 		RaycastHit hit;
-		float half_height = GetComponent<BoxCollider> ().size.y / 2 + 0.01f;
-		float half_width = GetComponent<BoxCollider> ().size.x / 2 + 0.01f;
+		float half_height = GetComponent<SpriteRenderer> ().bounds.size.y / 2 + 0.01f;
+		float half_width = GetComponent<SpriteRenderer> ().bounds.size.x / 2 + 0.01f;
 
 		//0.08f --> Time.fixedDeltaTime * rb.velocity.magnitude ? 
 		if ((rb.SweepTest (Vector3.left, out hit, 0.08f) && Input.GetAxisRaw("Horizontal") < 0) || 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour {
 				can_jump = true;
 			}
 		} else {
-			can_jump = false;
+			//can_jump = false;
 		}
 	}
 
