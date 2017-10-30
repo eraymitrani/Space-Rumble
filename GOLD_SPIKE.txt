@@ -1,0 +1,1 @@
+Our Gold Spike was to create two fully-controllable players who can be controlled by Xbox Controllers. Controls include a leafblower which can push external objects and players. There are also external objects that can harm the players.
