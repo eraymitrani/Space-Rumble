@@ -18,6 +18,8 @@ public class ArmRotation : MonoBehaviour
     void Awake()
     {
         pc = GetComponentInParent<PlatformerCharacter2D>();
+
+
     }
 	void Start(){
 		controller = GetComponentInParent<Platformer2DUserControl> ().controller;
@@ -45,8 +47,9 @@ public class ArmRotation : MonoBehaviour
 //
 //        }
 
-		x = GetComponentInParent<Platformer2DUserControl> ().controller.RightStickX;
-		y = GetComponentInParent<Platformer2DUserControl> ().controller.RightStickY;
+		controller = GetComponentInParent<Platformer2DUserControl> ().controller;
+		x = controller.RightStickX;
+		y = controller.RightStickY;
 
 		if (isRight) {
 			rotZ = Mathf.Atan2 (y, x) * Mathf.Rad2Deg;

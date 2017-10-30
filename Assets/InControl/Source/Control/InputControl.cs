@@ -51,7 +51,7 @@ namespace InControl
 
 			if (UpdateTick > updateTick)
 			{
-				throw new InvalidOperationException( "A control cannot be updated with an earlier tick." );
+				//throw new InvalidOperationException( "A control cannot be updated with an earlier tick." );
 			}
 
 			tempState.Set( state || tempState.State );
@@ -67,7 +67,7 @@ namespace InControl
 
 			if (UpdateTick > updateTick)
 			{
-				throw new InvalidOperationException( "A control cannot be updated with an earlier tick." );
+				//throw new InvalidOperationException( "A control cannot be updated with an earlier tick." );
 			}
 
 			if (Mathf.Abs( value ) > Mathf.Abs( tempState.Value ))
