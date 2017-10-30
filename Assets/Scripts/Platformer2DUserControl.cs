@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using InControl;
 
 namespace UnityStandardAssets._2D
 {
@@ -9,6 +10,26 @@ namespace UnityStandardAssets._2D
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+
+		public int player_num;
+		public InputDevice controller;
+
+		private void Start(){
+			if (player_num == 1) {
+				//controller = InputManager.Devices [0];
+				InputManager.AttachDevice(PlayerControllers.Player1);
+				controller = PlayerControllers.Player1;
+			} else if (player_num == 2) {
+				InputManager.AttachDevice(PlayerControllers.Player2);
+				controller = PlayerControllers.Player2;
+			} else if (player_num == 3) {
+				InputManager.AttachDevice(PlayerControllers.Player3);
+				controller = PlayerControllers.Player3;
+			} else if (player_num == 4) {
+				InputManager.AttachDevice(PlayerControllers.Player4);
+				controller = PlayerControllers.Player4;
+			}
+		}
 
 
         private void Awake()
@@ -22,7 +43,8 @@ namespace UnityStandardAssets._2D
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                //m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				m_Jump = controller.Action1.WasPressed;
             }
         }
 
@@ -31,7 +53,8 @@ namespace UnityStandardAssets._2D
         {
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            //float h = CrossPlatformInputManager.GetAxis("Horizontal");
+			float h = controller.LeftStickX;
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = false;

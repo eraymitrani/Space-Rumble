@@ -20,7 +20,8 @@ public class TrackSelection : MonoBehaviour {
     string[] MasterTrackList = new string[]
     {
         "Zach's Scene",
-		"Riley's Scene"
+		"Riley's Scene", 
+		"Eray's Scene"
     };
 
     void Start()
