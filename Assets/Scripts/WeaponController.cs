@@ -29,6 +29,10 @@ public class WeaponController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		if (GetComponentInParent<ArmRotation> ().controller == null) {
+			return;
+		}
+
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
 		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.WasPressed){
             Debug.Log("Shoot");

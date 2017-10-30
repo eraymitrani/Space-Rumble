@@ -40,6 +40,10 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
+			if (controller == null) {
+				return;
+			}
+
             if (m_Jump == 0)
             {
                 // Read the jump input in Update so button presses aren't missed.
@@ -57,6 +61,10 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
+			if (controller == null) {
+				return;
+			}
+
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             //float h = CrossPlatformInputManager.GetAxis("Horizontal");

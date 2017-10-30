@@ -26,6 +26,10 @@ public class ArmRotation : MonoBehaviour
 	}
     void Update()
     {
+		if (controller == null) {
+			return;
+		}
+
         isRight = pc.dir();
 //        // subtracting the position of the player from the mouse position
 //        if (isRight)
