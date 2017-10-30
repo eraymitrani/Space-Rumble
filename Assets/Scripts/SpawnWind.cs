@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class SpawnWind : MonoBehaviour {
 
-	// Use this for initialization
+
+
+	public GameObject wind;
+
 	void Start () {
-		
+		StartCoroutine (SpawnLoop ());
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	IEnumerator SpawnLoop() {
+		// change to "while !gameOver -- not sure how team is managing this
+		while (true) {
+			float xcoord = Random.Range (-10, 10);
+			float ycoord = Random.Range(-3, 3);
+
+			GameObject w = GameObject.Instantiate (wind);
+			w.transform.position = new Vector2 (xcoord, ycoord);
+
+			// Wait for next spawn
+			yield return new WaitForSeconds (5);
+		}
 	}
 }
