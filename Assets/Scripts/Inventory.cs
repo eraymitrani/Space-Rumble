@@ -10,6 +10,8 @@ public class Inventory : MonoBehaviour
     private float stunInterval = 0.5f;
     private SpriteRenderer sr;
     private Color original;
+    public ScoreManager scoreManager;
+    private UnityStandardAssets._2D.Platformer2DUserControl userControl;
 
     // Use this for initialization
     void Start ()
@@ -17,14 +19,16 @@ public class Inventory : MonoBehaviour
 	    currentHP = maxHP;
 	    sr = transform.Find("Sprites").GetComponent<SpriteRenderer>();
 	    original = sr.color;
-
+        userControl = GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>();
     }
 
     // Update is called once per frame
     void Update () {
 	    if (currentHP <= 0)
 	    {
-	        Dead();
+            //Dead();
+            scoreManager.addScore(userControl.player_num, -1);
+            scoreManager.announceWinner();
 	    }
 	}
 

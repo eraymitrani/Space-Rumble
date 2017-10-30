@@ -11,19 +11,21 @@ public class GameLoopManager : MonoBehaviour {
 	public float game_timer;
 	public Text time_left;
 
+    ScoreManager scoreManager;
+
 	// Use this for initialization
 	void Start () {
 		game_timer = 30;
+        scoreManager = GetComponent<ScoreManager>();
+        StartCoroutine(GameEnd());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		game_timer -= Time.deltaTime;
-		time_left.text = Mathf.Floor (game_timer).ToString();
-		if (game_timer <= 0.2) {
-			SceneManager.LoadScene ("MainMenu");
-		}
+        if(game_timer > 0)
+		    time_left.text = Mathf.Floor (game_timer).ToString();
 
 		if (InputManager.ActiveDevice.GetControl(InputControlType.Back)){
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
@@ -33,4 +35,10 @@ public class GameLoopManager : MonoBehaviour {
 			SceneManager.LoadScene ("MainMenu");
 		}
 	}
+
+    IEnumerator GameEnd()
+    {
+        yield return new WaitForSeconds(game_timer);
+        scoreManager.announceWinner();
+    }
 }
