@@ -1,3 +1,3 @@
 https://opengameart.org/content/grassy-plains-background ---Background from open game art
-http://devassets.com/assets/2d-mega-pack/ ---Player spritee + weapon sprite + arm sprite + template for arm rotation code (modified for controllers)
+http://devassets.com/assets/2d-mega-pack/ ---Player sprite + weapon sprite + arm sprite + template for arm rotation code (modified for controllers)
 
