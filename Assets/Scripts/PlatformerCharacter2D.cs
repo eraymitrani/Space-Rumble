@@ -62,7 +62,7 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch, int jump)
         {
            
 
@@ -91,12 +91,17 @@ namespace UnityStandardAssets._2D
                 }
             }
             // If the player should jump...
-            if (m_Grounded && jump)
+            if (m_Grounded && jump == 1)
             {
                 // Add a vertical force to the player.
                 m_Grounded = false;
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
+			// if player does short hop, ends jup early
+			if (m_Rigidbody2D.velocity.y > 0 && jump == 2) { 
+				// stop their upwards motion
+				m_Rigidbody2D.velocity = Vector2.zero;
+			}
         }
 
 

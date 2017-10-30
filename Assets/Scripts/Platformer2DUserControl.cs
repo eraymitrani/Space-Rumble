@@ -9,7 +9,7 @@ namespace UnityStandardAssets._2D
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
-        private bool m_Jump;
+        private int m_Jump;
 
 		public int player_num;
 		public InputDevice controller;
@@ -40,11 +40,17 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (!m_Jump)
+            if (m_Jump == 0)
             {
                 // Read the jump input in Update so button presses aren't missed.
                 //m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-				m_Jump = controller.Action1.WasPressed;
+				//m_Jump = controller.Action1.WasPressed;
+
+				if (controller.Action1.WasPressed) {
+					m_Jump = 1;
+				} else if (controller.Action1.WasReleased) {
+					m_Jump = 2;
+				}
             }
         }
 
@@ -57,7 +63,7 @@ namespace UnityStandardAssets._2D
 			float h = controller.LeftStickX;
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
-            m_Jump = false;
+            m_Jump = 0;
         }
     }
 }
