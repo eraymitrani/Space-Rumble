@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
     public LayerMask toHitMask;
     private Transform fireLoc;
 
+    public float power = -200f;
 	// Use this for initialization
 	void Awake ()
 	{
@@ -30,12 +31,17 @@ public class WeaponController : MonoBehaviour
 
     void Shoot()
     {
-        RaycastHit hit = new RaycastHit();
-        Ray ray = new Ray(fireLoc.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, 200))
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(new Vector2(fireLoc.position.x, fireLoc.position.y), 5f, new Vector2(transform.forward.x, transform.forward.y), toHitMask);
+        
+        foreach (var hit in hits)
         {
-            Debug.DrawLine(ray.origin, hit.point);
-            Debug.Log("Hello");
+            Debug.Log(hit.collider.tag);
+            Debug.Log(hit.distance);
+            if (hit.rigidbody != null && hit.distance != 0)
+            {
+                Debug.Log(hit.distance);
+                hit.collider.attachedRigidbody.AddForce(Vector2.one * (power / hit.distance));
+            }
         }
     }
 }
