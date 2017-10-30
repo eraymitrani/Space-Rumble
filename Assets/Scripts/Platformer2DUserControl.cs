@@ -62,6 +62,7 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
 			if (controller == null) {
+				Debug.Log ("no control " + player_num.ToString ());
 				return;
 			}
 

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityStandardAssets._2D;
 using InControl;
 
-public class ArmRotation : MonoBehaviour
+	public class ArmRotation : MonoBehaviour
 {
 
     //public int rotationOffset = 180;
@@ -26,7 +26,9 @@ public class ArmRotation : MonoBehaviour
 	}
     void Update()
     {
+		
 		if (controller == null) {
+			controller = GetComponentInParent<Platformer2DUserControl> ().controller;
 			return;
 		}
 
