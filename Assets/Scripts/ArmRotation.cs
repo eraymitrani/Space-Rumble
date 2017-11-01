@@ -8,7 +8,7 @@ using InControl;
 
     //public int rotationOffset = 180;
     float rotZ, x, y;
-	public Vector2 angle_vec;
+	//public Vector2 angle_vec;
 	public InputDevice controller;
 
     private bool isRight;
@@ -59,10 +59,10 @@ using InControl;
 
 		if (isRight) {
 			rotZ = Mathf.Atan2 (y, x) * Mathf.Rad2Deg;
-			angle_vec = new Vector2 (x, y);
+			//angle_vec = new Vector2 (x, y);
 		} else {
 			rotZ = Mathf.Atan2 (-y, -x) * Mathf.Rad2Deg;
-			angle_vec = new Vector2 (-x, -y);
+			//angle_vec = new Vector2 (-x, -y);
 		}
 		transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
