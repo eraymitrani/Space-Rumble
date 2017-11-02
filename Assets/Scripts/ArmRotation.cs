@@ -34,39 +34,50 @@ public class ArmRotation : MonoBehaviour
 
         if (controller == null)
         {
-            controller = GetComponentInParent<Platformer2DUserControl>().controller;
-            x = controller.RightStickX;
-            y = controller.RightStickY;
+			controller = GetComponentInParent<Platformer2DUserControl> ().controller;
+			return;
+		}
+
+        x = controller.RightStickX;
+        y = controller.RightStickY;
+
+		if (Mathf.Abs (controller.LeftStickX) < 0.01f) {
+			isRight = wasRight;
+		} else if (controller.LeftStickX > 0) {
+			isRight = true;
+		} else {
+			isRight = false;
+		}
 
 
 
-            if (Mathf.Abs(x) < 0.01 && Mathf.Abs(y) < 0.01)
+        if (Mathf.Abs(x) < 0.01 && Mathf.Abs(y) < 0.01)
+        {
+            if (isRight != wasRight)
             {
-                if (isRight != wasRight)
-                {
-                    old_rotZ += 180;
-                    //Debug.Log ("flipping");
-                }
-                rotZ = old_rotZ;
+                old_rotZ += 180;
+                //Debug.Log ("flipping");
+            }
+            rotZ = old_rotZ;
+        }
+        else
+        {
+            if (isRight)
+            {
+                rotZ = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+                //angle_vec = new Vector2 (x, y);
             }
             else
             {
-                if (isRight)
-                {
-                    rotZ = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-                    //angle_vec = new Vector2 (x, y);
-                }
-                else
-                {
-                    rotZ = Mathf.Atan2(-y, -x) * Mathf.Rad2Deg;
-                    //angle_vec = new Vector2 (-x, -y);
-                }
-                old_rotZ = rotZ;
+                rotZ = Mathf.Atan2(-y, -x) * Mathf.Rad2Deg;
+                //angle_vec = new Vector2 (-x, -y);
             }
-
-            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-            wasRight = isRight;
+            old_rotZ = rotZ;
         }
+			
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        wasRight = isRight;
+        
     }
 }
 //        }
