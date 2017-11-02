@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -64,5 +65,6 @@ public class Inventory : MonoBehaviour
         InvokeRepeating("FlashOn", 0.0f, 0.2f);
         InvokeRepeating("FlashOff", 0.1f, 0.2f);
         Invoke("CancelStun", stunInterval);
+        GetComponentInChildren<Text>().text = (Get_Hp() / 2).ToString() + "♥";
     }
 }

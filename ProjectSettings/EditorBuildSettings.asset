@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 14db0b8711b7fb342a75c974e21fb718
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/zach_scene.unity
     guid: 64ee634f35512664da739c09481a4835
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/riley_scene.unity
     guid: 850395ba832ef42889ceb1c987500495
   - enabled: 1
     path: Assets/Scenes/eray_scene.unity
     guid: 3dc0b71fd07f6bb48bbe49bc63552c4f
+  - enabled: 1
+    path: Assets/Scenes/nick_scene.unity
+    guid: 773470ba6780448fc93156720f9cb178
