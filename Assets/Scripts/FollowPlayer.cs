@@ -32,7 +32,8 @@ public class FollowPlayer : MonoBehaviour {
 
 	void Update(){
 		transform.position = player_to_follow.transform.position + offset;
-		GetComponent<Text> ().text = (player_to_follow.GetComponent<Inventory> ().Get_Hp () / 2).ToString () + "♥";
+		GetComponent<Text> ().text = (player_to_follow.GetComponent<Inventory> ().Get_Hp () / 2).ToString () + "♥" + "    " + 
+									  Mathf.Floor(player_to_follow.GetComponentInChildren<WeaponController>().fuel).ToString();
 	}
 
 }

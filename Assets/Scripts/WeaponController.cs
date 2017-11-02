@@ -9,6 +9,10 @@ public class WeaponController : MonoBehaviour
     public LayerMask toHitMask;
     private Transform fireLoc;
 
+	public float fuel = 100;
+	int consume_rate = 75;		//higher is faster
+	int recharge_rate = 25;		//lower is slower
+
 	//InputDevice controller;
 
 //	void Start(){
@@ -37,11 +41,25 @@ public class WeaponController : MonoBehaviour
 		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
             Debug.Log("Shoot");
 	        Shoot();
-	    }
+		} else {
+			//refuel
+			if (fuel > 100) {
+				fuel = 100;
+			} else {
+				fuel += Time.deltaTime * recharge_rate;
+			}
+		}
 	}
 
     void Shoot()
     {
+		fuel -= Time.deltaTime * consume_rate;
+		if (fuel < 0) {
+			fuel = 0;
+			return;
+		}
+		Debug.Log (fuel.ToString());
+
 		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
         Vector2 angle = new Vector2(transform.position.x,transform.position.y);
 		angle.Normalize();

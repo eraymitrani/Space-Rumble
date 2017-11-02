@@ -15,20 +15,24 @@ namespace UnityStandardAssets._2D
 		public InputDevice controller;
 
 		private void Start(){
-			if (player_num == 1) {
-				//controller = InputManager.Devices [0];
-				InputManager.AttachDevice(PlayerControllers.Player1);
-				controller = PlayerControllers.Player1;
-			} else if (player_num == 2) {
-				InputManager.AttachDevice(PlayerControllers.Player2);
-				controller = PlayerControllers.Player2;
-			} else if (player_num == 3) {
-				InputManager.AttachDevice(PlayerControllers.Player3);
-				controller = PlayerControllers.Player3;
-			} else if (player_num == 4) {
-				InputManager.AttachDevice(PlayerControllers.Player4);
-				controller = PlayerControllers.Player4;
-			}
+
+			controller = PlayerControllers.getPlayerController (player_num);
+			InputManager.AttachDevice (controller);
+
+//			if (player_num == 1) {
+//				//controller = InputManager.Devices [0];
+//				InputManager.AttachDevice(PlayerControllers.Player1);
+//				controller = PlayerControllers.Player1;
+//			} else if (player_num == 2) {
+//				InputManager.AttachDevice(PlayerControllers.Player2);
+//				controller = PlayerControllers.Player2;
+//			} else if (player_num == 3) {
+//				InputManager.AttachDevice(PlayerControllers.Player3);
+//				controller = PlayerControllers.Player3;
+//			} else if (player_num == 4) {
+//				InputManager.AttachDevice(PlayerControllers.Player4);
+//				controller = PlayerControllers.Player4;
+//			}
 		}
 
 
