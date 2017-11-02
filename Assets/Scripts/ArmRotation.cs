@@ -7,11 +7,12 @@ public class ArmRotation : MonoBehaviour
 {
 
     //public int rotationOffset = 180;
-    float rotZ, x, y;
+    float rotZ, x, y, old_rotZ;
 	public Vector2 angle_vec;
 	public InputDevice controller;
 
     private bool isRight;
+	private bool wasRight = true;
     private PlatformerCharacter2D pc;
 
     // Update is called once per frame
@@ -57,15 +58,26 @@ public class ArmRotation : MonoBehaviour
 		x = controller.RightStickX;
 		y = controller.RightStickY;
 
-		if (isRight) {
-			rotZ = Mathf.Atan2 (y, x) * Mathf.Rad2Deg;
-			//angle_vec = new Vector2 (x, y);
+
+
+		if (Mathf.Abs (x) < 0.01 && Mathf.Abs (y) < 0.01) {
+			if (isRight != wasRight) {
+				old_rotZ += 180;
+				//Debug.Log ("flipping");
+			}
+			rotZ = old_rotZ;
 		} else {
-			rotZ = Mathf.Atan2 (-y, -x) * Mathf.Rad2Deg;
-			//angle_vec = new Vector2 (-x, -y);
+			if (isRight) {
+				rotZ = Mathf.Atan2 (y, x) * Mathf.Rad2Deg;
+				//angle_vec = new Vector2 (x, y);
+			} else {
+				rotZ = Mathf.Atan2 (-y, -x) * Mathf.Rad2Deg;
+				//angle_vec = new Vector2 (-x, -y);
+			}
+			old_rotZ = rotZ;
 		}
+				
 		transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
-
+		wasRight = isRight;
     }
 }

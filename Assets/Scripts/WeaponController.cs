@@ -34,7 +34,7 @@ public class WeaponController : MonoBehaviour
 		}
 
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
-		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.WasPressed){
+		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
             Debug.Log("Shoot");
 	        Shoot();
 	    }
