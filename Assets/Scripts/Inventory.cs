@@ -13,12 +13,18 @@ public class Inventory : MonoBehaviour
     private Color original;
     public ScoreManager scoreManager;
     private UnityStandardAssets._2D.Platformer2DUserControl userControl;
+    private Animator m_Anim;
 
     // Use this for initialization
     void Start ()
-	{
+    {
+        m_Anim = GetComponent<Animator>();
 	    currentHP = maxHP;
 	    sr = transform.Find("Sprites").GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            Debug.LogWarning("Sprite not found");
+        }
 	    original = sr.color;
         userControl = GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>();
     }
@@ -30,6 +36,7 @@ public class Inventory : MonoBehaviour
             //Dead();
             scoreManager.addScore(userControl.player_num, -1);
             scoreManager.announceWinner();
+            m_Anim.SetBool("Dead", true);
 	    }
 	}
 
