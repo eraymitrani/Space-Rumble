@@ -2573,6 +2573,10 @@ Prefab:
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 759278466}
+    - target: {fileID: 1731479578055882, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
   m_IsPrefabParent: 0
