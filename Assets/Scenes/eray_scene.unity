@@ -1591,19 +1591,6 @@ BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< 2c921b017c629c23f66e536133bdf19003e40828
-  m_GameObject: {fileID: 1442205685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfccd4296fd4e864090842121c382896, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toHitMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  power: 80
---- !u!212 &1442205688
-=======
   m_GameObject: {fileID: 1438879386}
   m_Enabled: 0
   m_Density: 1
@@ -1625,7 +1612,6 @@ BoxCollider2D:
   m_Size: {x: 7.57, y: 3.95}
   m_EdgeRadius: 0
 --- !u!212 &1438879389
->>>>>>> added animations and set trigger in movement, also updated player prefab
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1982,122 +1968,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-<<<<<<< 2c921b017c629c23f66e536133bdf19003e40828
---- !u!1001 &1625541882
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457313214716156, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1731479578055882, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Name
-      value: Player 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114297370303168690, guid: 478070d68d4ed4442a53a1aedf234f17,
-        type: 2}
-      propertyPath: player_num
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1304536546662572, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1678654936603676, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163544131368214, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1731479578055882, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1856928315041416, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1877531707626420, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1382107334697700, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114022971336746260, guid: 478070d68d4ed4442a53a1aedf234f17,
-        type: 2}
-      propertyPath: toHitMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763147643904946, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4586506372221746, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603416570147308, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4980420763201138, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1678654936603676, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114359565110824314, guid: 478070d68d4ed4442a53a1aedf234f17,
-        type: 2}
-      propertyPath: scoreManager
-      value: 
-      objectReference: {fileID: 759278466}
-    - target: {fileID: 1731479578055882, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 478070d68d4ed4442a53a1aedf234f17, type: 2}
-  m_IsPrefabParent: 0
-=======
->>>>>>> added animations and set trigger in movement, also updated player prefab
 --- !u!1001 &1630327603
 Prefab:
   m_ObjectHideFlags: 0
