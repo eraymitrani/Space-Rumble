@@ -61,16 +61,19 @@ public class Inventory : MonoBehaviour
     private void CancelStun()
     {
         isStun = false;
-        CancelInvoke("FlashOn");
-        CancelInvoke("FlashOff");
-        sr.color = original;
+        m_Anim.SetBool("DamageTaken", false);
+
+        //CancelInvoke("FlashOn");
+        //CancelInvoke("FlashOff");
+        //sr.color = original;
     }
     public void Damage(int dmg)
     {
         currentHP -= dmg;
         isStun = true;
-        InvokeRepeating("FlashOn", 0.0f, 0.2f);
-        InvokeRepeating("FlashOff", 0.1f, 0.2f);
+        //InvokeRepeating("FlashOn", 0.0f, 0.2f);
+        //InvokeRepeating("FlashOff", 0.1f, 0.2f);
+        m_Anim.SetBool("DamageTaken", true);
         Invoke("CancelStun", stunInterval);
         GetComponentInChildren<Text>().text = (Get_Hp() / 2).ToString() + "♥";
     }
