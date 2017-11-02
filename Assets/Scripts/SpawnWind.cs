@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpawnWind : MonoBehaviour {
 
-
-
 	public GameObject wind;
+
+	int[] windSpawnCoords = {-10, -9, 9, 10};
 
 	void Start () {
 		StartCoroutine (SpawnLoop ());
@@ -15,7 +15,8 @@ public class SpawnWind : MonoBehaviour {
 	IEnumerator SpawnLoop() {
 		// change to "while !gameOver -- not sure how team is managing this
 		while (true) {
-			float xcoord = Random.Range (-10, 10);
+			
+			float xcoord = windSpawnCoords [Random.Range (0, windSpawnCoords.Length)];
 			float ycoord = Random.Range(-3, 3);
 
 			GameObject w = GameObject.Instantiate (wind);

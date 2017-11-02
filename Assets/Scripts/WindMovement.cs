@@ -11,15 +11,38 @@ public class WindMovement : MonoBehaviour {
 
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D> ();
+
+		// East or West wind?
+		if (this.transform.position.x > 0) {
+			right = false;
+			this.transform.localScale = new Vector2 (-1, 1);
+		}
+
+		StartCoroutine (Form ());
+	}
+
+	IEnumerator Form() {
+
+		// Do nothing but stay in place for now
+		// Will extend later
+		yield return new WaitForSeconds(1);
+
+		StartCoroutine (Move ());
+
 	}
 	
-	void Update () {
-		// Maintain a constant speed
-		if (right) {
-			rb.velocity = Vector2.right * windForce;
-		}
-		else {
-			rb.velocity = Vector2.left * windForce;
+	IEnumerator Move () {
+
+		while (true) {
+			// Maintain a constant speed
+			if (right) {
+				rb.velocity = Vector2.right * windForce;
+			}
+			else {
+				rb.velocity = Vector2.left * windForce;
+			}
+
+			yield return null;
 		}
 	}
 }

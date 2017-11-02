@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4036684589242586}
+  - component: {fileID: 114532653302900368}
   - component: {fileID: 114481123434360628}
   m_Layer: 0
   m_Name: Hazard Pool
@@ -34,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847259185554364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.828125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,3 +52,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2997212b2fb654db49138bf51f3bec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wind: {fileID: 1877561304001436, guid: 341a92aa9a6684447bdbfbe86a7ed480, type: 2}
+--- !u!114 &114532653302900368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847259185554364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a9da11184754907beb8f956243c254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fire: {fileID: 1637099571622654, guid: 2729977ee8fdd6e4192846bb64d8b1db, type: 2}
+  fire_wait_time: 10

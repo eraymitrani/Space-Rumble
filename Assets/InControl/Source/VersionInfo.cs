@@ -28,11 +28,7 @@ namespace InControl
 				Major = 1,
 				Minor = 4,
 				Patch = 4,
-<<<<<<< 2c921b017c629c23f66e536133bdf19003e40828
-				Build = 4727
-=======
-				Build = 4698
->>>>>>> added animations and set trigger in movement, also updated player prefab
+				Build = 4745
 
 			};
 		}
