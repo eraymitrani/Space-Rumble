@@ -3,12 +3,12 @@ using System.Collections;
 using UnityStandardAssets._2D;
 using InControl;
 
-	public class ArmRotation : MonoBehaviour
+public class ArmRotation : MonoBehaviour
 {
 
     //public int rotationOffset = 180;
     float rotZ, x, y;
-	//public Vector2 angle_vec;
+	public Vector2 angle_vec;
 	public InputDevice controller;
 
     private bool isRight;

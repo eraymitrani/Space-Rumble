@@ -19,11 +19,15 @@ public class TrackSelection : MonoBehaviour {
 
     string[] MasterTrackList = new string[]
     {
-        /*"Zach's Scene",
+        "Zach's Scene",
 		"Riley's Scene", 
-		"Eray's Scene"*/
-        "Arena"
+		"Eray's Scene",
+        "Nick's Scene"
     };
+    /*string[] MasterTrackList = new string[]
+    {
+        "Arena"
+    };*/
 
     void Start()
     {

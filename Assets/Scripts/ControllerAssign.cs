@@ -19,6 +19,11 @@ public class ControllerAssign : MonoBehaviour {
     bool p1 = false, p2 = false, p3 = false, p4 = false;
     HashSet<InputDevice> usedControllers = new HashSet<InputDevice>();
 
+    void Awake()
+    {
+        PlayerControllers.reset();
+    }
+
     void Update()
     {
         if(InputManager.ActiveDevice.Action1.WasPressed)
