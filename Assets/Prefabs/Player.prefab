@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 114359565110824314}
   - component: {fileID: 95960238905008110}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player // old
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,9 @@ MonoBehaviour:
   toHitMask:
     serializedVersion: 2
     m_Bits: 4294967039
+  fuel: 100
   power: 800
+  self_power: 30
 --- !u!114 &114030239189214848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle_vec: {x: 0, y: 0}
+  angle: 0
 --- !u!114 &114190309813938182
 MonoBehaviour:
   m_ObjectHideFlags: 1
