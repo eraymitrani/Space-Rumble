@@ -10,6 +10,7 @@ public class ArmRotation : MonoBehaviour
     float rotZ, x, y, old_rotZ;
 
     public Vector2 angle_vec;
+	public float angle;
     public InputDevice controller;
 
     private bool isRight;
@@ -74,8 +75,17 @@ public class ArmRotation : MonoBehaviour
             }
             old_rotZ = rotZ;
         }
-			
+
+		angle = rotZ;
+		if (!isRight) {
+			angle += 180;
+		}
+
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+		if (!isRight) {
+			rotZ += 180;
+		}
+		angle_vec = new Vector2 (Mathf.Cos (Mathf.Deg2Rad * rotZ), Mathf.Sin (Mathf.Deg2Rad * rotZ));
         wasRight = isRight;
         
     }
