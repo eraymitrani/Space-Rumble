@@ -48,6 +48,7 @@ public class ControllerAssign : MonoBehaviour {
                 p1 = true;
                 Player1.transform.Find("Join").gameObject.SetActive(false);
                 Player1.transform.Find("Joined").gameObject.SetActive(true);
+                UpdateColor(p1Color, p1Char, p1ColorI, 1);
             }
             else if(!p2)
             {
@@ -55,6 +56,7 @@ public class ControllerAssign : MonoBehaviour {
                 p2 = true;
                 Player2.transform.Find("Join").gameObject.SetActive(false);
                 Player2.transform.Find("Joined").gameObject.SetActive(true);
+                UpdateColor(p2Color, p2Char, p2ColorI, 2);
             }
             else if (!p3)
             {
@@ -62,6 +64,7 @@ public class ControllerAssign : MonoBehaviour {
                 p3 = true;
                 Player3.transform.Find("Join").gameObject.SetActive(false);
                 Player3.transform.Find("Joined").gameObject.SetActive(true);
+                UpdateColor(p3Color, p3Char, p3ColorI, 3);
             }
             else if (!p4)
             {
@@ -69,6 +72,7 @@ public class ControllerAssign : MonoBehaviour {
                 p4 = true;
                 Player4.transform.Find("Join").gameObject.SetActive(false);
                 Player4.transform.Find("Joined").gameObject.SetActive(true);
+                UpdateColor(p4Color, p4Char, p4ColorI, 4);
             }
 
             usedControllers.Add(InputManager.ActiveDevice);
@@ -85,13 +89,13 @@ public class ControllerAssign : MonoBehaviour {
             if(PlayerControllers.Player1.LeftStickX > deadZone && !p1Moved)
             {
                 p1ColorI = Mathf.Clamp(p1ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p1Color, p1Char, p1ColorI);
+                UpdateColor(p1Color, p1Char, p1ColorI, 1);
                 p1Moved = true;
             }
             else if(PlayerControllers.Player1.LeftStickX < -deadZone && !p1Moved)
             {
                 p1ColorI = Mathf.Clamp(p1ColorI - 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p1Color, p1Char, p1ColorI);
+                UpdateColor(p1Color, p1Char, p1ColorI, 1);
                 p1Moved = true;
             }
             else if(PlayerControllers.Player1.LeftStickX < deadZone && PlayerControllers.Player1.LeftStickX > -deadZone)
@@ -105,13 +109,13 @@ public class ControllerAssign : MonoBehaviour {
             if (PlayerControllers.Player2.LeftStickX > deadZone && !p2Moved)
             {
                 p2ColorI = Mathf.Clamp(p2ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p2Color, p2Char, p2ColorI);
+                UpdateColor(p2Color, p2Char, p2ColorI, 2);
                 p2Moved = true;
             }
             else if (PlayerControllers.Player2.LeftStickX < -deadZone && !p2Moved)
             {
                 p2ColorI = Mathf.Clamp(p2ColorI - 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p2Color, p2Char, p2ColorI);
+                UpdateColor(p2Color, p2Char, p2ColorI, 2);
                 p2Moved = true;
             }
             else if (PlayerControllers.Player2.LeftStickX < deadZone && PlayerControllers.Player2.LeftStickX > -deadZone)
@@ -125,13 +129,13 @@ public class ControllerAssign : MonoBehaviour {
             if (PlayerControllers.Player3.LeftStickX > deadZone && !p3Moved)
             {
                 p3ColorI = Mathf.Clamp(p3ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p3Color, p3Char, p3ColorI);
+                UpdateColor(p3Color, p3Char, p3ColorI, 3);
                 p3Moved = true;
             }
             else if (PlayerControllers.Player3.LeftStickX < -deadZone && !p3Moved)
             {
                 p3ColorI = Mathf.Clamp(p3ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p3Color, p3Char, p3ColorI);
+                UpdateColor(p3Color, p3Char, p3ColorI, 3);
                 p3Moved = true;
             }
             else if (PlayerControllers.Player3.LeftStickX < deadZone && PlayerControllers.Player3.LeftStickX > -deadZone)
@@ -145,13 +149,13 @@ public class ControllerAssign : MonoBehaviour {
             if (PlayerControllers.Player4.LeftStickX > deadZone && !p4Moved)
             {
                 p4ColorI = Mathf.Clamp(p4ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p4Color, p4Char, p4ColorI);
+                UpdateColor(p4Color, p4Char, p4ColorI, 4);
                 p4Moved = true;
             }
             else if (PlayerControllers.Player4.LeftStickX < -deadZone && !p4Moved)
             {
                 p4ColorI = Mathf.Clamp(p4ColorI + 1, 0, PlayerColors.Length - 1);
-                UpdateColor(p4Color, p4Char, p4ColorI);
+                UpdateColor(p4Color, p4Char, p4ColorI, 4);
                 p4Moved = true;
             }
             else if (PlayerControllers.Player4.LeftStickX < deadZone && PlayerControllers.Player4.LeftStickX > -deadZone)
@@ -161,9 +165,16 @@ public class ControllerAssign : MonoBehaviour {
         }
     }
 
-    void UpdateColor(GameObject panel, GameObject player, int index)
+    void UpdateColor(GameObject panel, GameObject player, int index, int playerNum)
     {
         panel.GetComponent<Image>().color = PlayerColors[index];
         player.GetComponent<Image>().color = PlayerColors[index];
+        switch(playerNum)
+        {
+            case 1: PlayerControllers.Color1 = PlayerColors[index]; break;
+            case 2: PlayerControllers.Color2 = PlayerColors[index]; break;
+            case 3: PlayerControllers.Color3 = PlayerColors[index]; break;
+            case 4: PlayerControllers.Color4 = PlayerColors[index]; break;
+        }
     }
 }

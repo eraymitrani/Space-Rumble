@@ -1,8 +1,10 @@
 ﻿using InControl;
+using UnityEngine;
 
 public static class PlayerControllers {
 
     private static InputDevice player1 = null, player2 = null, player3 = null, player4 = null;
+    private static Color player1Color, player2Color, player3Color, player4Color;
 
     public static void reset()
     {
@@ -82,6 +84,54 @@ public static class PlayerControllers {
         set
         {
             player4 = value;
+        }
+    }
+
+    public static Color Color1
+    {
+        get
+        {
+            return player1Color;
+        }
+        set
+        {
+            player1Color = value;
+        }
+    }
+
+    public static Color Color2
+    {
+        get
+        {
+            return player2Color;
+        }
+        set
+        {
+            player2Color = value;
+        }
+    }
+
+    public static Color Color3
+    {
+        get
+        {
+            return player3Color;
+        }
+        set
+        {
+            player3Color = value;
+        }
+    }
+
+    public static Color Color4
+    {
+        get
+        {
+            return player4Color;
+        }
+        set
+        {
+            player4Color = value;
         }
     }
 }
