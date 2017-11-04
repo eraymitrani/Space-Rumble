@@ -15,7 +15,7 @@ public class GameLoopManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		game_timer = 30;
+		game_timer = 60;
         scoreManager = GetComponent<ScoreManager>();
         StartCoroutine(GameEnd());
 	}
