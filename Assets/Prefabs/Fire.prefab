@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4714273869671684}
   - component: {fileID: 212226387600673514}
+  - component: {fileID: 114379061833264510}
   - component: {fileID: 61008839869521632}
-  - component: {fileID: 114153856395238068}
   m_Layer: 2
   m_Name: Fire
   m_TagString: hazard
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.69, y: 1.7626672}
   m_EdgeRadius: 0
---- !u!114 &114153856395238068
+--- !u!114 &114379061833264510
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,11 +75,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1637099571622654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bc0e22b17c14cba97cf29f56957496, type: 3}
+  m_Script: {fileID: 11500000, guid: 0af69bffbc636ac45b9c36598117a880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites: []
-  animationDelay: 0.5
+  sprites:
+  - {fileID: 21300000, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  - {fileID: 21300002, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  - {fileID: 21300004, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  - {fileID: 21300006, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  - {fileID: 21300008, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  - {fileID: 21300010, guid: abd4ea89f3a34ad43801c48bac6248ab, type: 3}
+  animationDelay: 0.08
 --- !u!212 &212226387600673514
 SpriteRenderer:
   m_ObjectHideFlags: 1
