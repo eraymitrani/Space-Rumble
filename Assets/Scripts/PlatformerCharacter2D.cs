@@ -64,6 +64,11 @@ namespace UnityStandardAssets._2D
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+
+			//this isn't great, but it does one-hit-kill
+			if (transform.position.y < -5) {
+				GetComponent<Inventory> ().Damage (100);
+			}
         }
 
 

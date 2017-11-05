@@ -20,7 +20,8 @@ public class Inventory : MonoBehaviour
     void Start ()
     {
         m_Anim = GetComponent<Animator>();
-	    currentHP = maxHP;
+	    //currentHP = maxHP;
+		currentHP = 1;
 	    sr = transform.Find("Sprites").GetComponent<SpriteRenderer>();
         if (sr == null)
         {
