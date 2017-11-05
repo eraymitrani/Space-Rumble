@@ -6,6 +6,7 @@ public class PlayerSpawner : MonoBehaviour {
 
     public GameObject Player;
     public GameObject[] Spawns = new GameObject[4];
+    public Material[] Colors = new Material[4];
 
     ScoreManager scoreManager;
 
@@ -24,10 +25,21 @@ public class PlayerSpawner : MonoBehaviour {
             {
                 switch (i)
                 {
-                    case 0: sr.color = PlayerControllers.Color1; break;
-                    case 1: sr.color = PlayerControllers.Color2; break;
-                    case 2: sr.color = PlayerControllers.Color3; break;
-                    case 3: sr.color = PlayerControllers.Color4; break;
+                    case 0: sr.material = Colors[i];
+                        Colors[i].color = PlayerControllers.Color1;
+                        break;
+                    case 1:
+                        sr.material = Colors[i];
+                        Colors[i].color = PlayerControllers.Color2;
+                        break;
+                    case 2:
+                        sr.material = Colors[i];
+                        Colors[i].color = PlayerControllers.Color3;
+                        break;
+                    case 3:
+                        sr.material = Colors[i];
+                        Colors[i].color = PlayerControllers.Color4;
+                        break;
                 }
             }
         }
