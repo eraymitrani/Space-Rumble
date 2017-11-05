@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4392475336895188}
   - component: {fileID: 212534979259765322}
-  - component: {fileID: 114955855469371798}
   - component: {fileID: 50672699460962572}
   - component: {fileID: 61167167025003930}
-  - component: {fileID: 114049778550379802}
+  - component: {fileID: 114675557175057608}
+  - component: {fileID: 114628480799425940}
   m_Layer: 0
   m_Name: Wind
   m_TagString: wind
@@ -89,7 +89,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.43}
   m_EdgeRadius: 0
---- !u!114 &114049778550379802
+--- !u!114 &114628480799425940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,11 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1877561304001436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c654d0a41723f4cbe88dbedb5730397d, type: 3}
+  m_Script: {fileID: 11500000, guid: 247fdbf7432bd4df4abda7cb43f98383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 3
---- !u!114 &114955855469371798
+  destroyTime: 8
+--- !u!114 &114675557175057608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1877561304001436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce368c52475b446a79a4020c1dd03722, type: 3}
+  m_Script: {fileID: 11500000, guid: 17d32893074a64a2ca6f826fc9af6088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   windForce: 5
