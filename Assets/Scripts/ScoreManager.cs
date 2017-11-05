@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
@@ -7,23 +6,39 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour {
 
-    public int numPlayers = 2;
+    public int stocks = 3;
     public TextMeshProUGUI winText;
     public float delayBeforeChange = 2f;
 
     int[] playerScores;
 
-	// Use this for initialization
-	void Start ()
+    PlayerSpawner playerSpawner;
+    int numPlayers = PlayerControllers.numOfPlayers();
+    bool[] playersDead;
+
+    // Use this for initialization
+    void Start ()
     {
         playerScores = new int[numPlayers];
+        playersDead = new bool[numPlayers];
         winText.text = "";
-
+        playerSpawner = GetComponent<PlayerSpawner>();
     }
 	
     public void addScore(int player, int score)
     {
         playerScores[player - 1] += score;
+        playerSpawner.updateStock(player - 1, stocks + playerScores[player - 1]);
+        if (playerScores[player - 1] + stocks <= 0)
+        {
+            playersDead[player - 1] = true;
+            bool[] alive = Array.FindAll(playersDead, a => a == false);
+            if (alive.Length <= 1)
+                announceWinner();
+            return;
+        }
+        //assuming this means they died
+        StartCoroutine(RespawnPlayer(player));
     }
 
     public void announceWinner()
@@ -40,5 +55,11 @@ public class ScoreManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(delayBeforeChange);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator RespawnPlayer(int i)
+    {
+        yield return new WaitForSeconds(1);
+        playerSpawner.respawnPlayer(i - 1);
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    private int currentHP, maxHP = 10;
+    private int currentHP;
+    public int maxHP = 5;
     public bool isStun;
     private float stunInterval = 0.5f;
     private SpriteRenderer sr;
@@ -31,12 +32,12 @@ public class Inventory : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-	    if (currentHP <= 0)
+	    if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
-            //Dead();
             scoreManager.addScore(userControl.player_num, -1);
-            scoreManager.announceWinner();
             m_Anim.SetBool("Dead", true);
+            userControl.enabled = false;
+            StartCoroutine(killSelf());
 	    }
 	}
 
@@ -44,37 +45,25 @@ public class Inventory : MonoBehaviour
     {
         return currentHP;
     }
-    private void Dead()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    }
-    private void FlashOn()
-    {
-        sr.color = Color.clear;
-    }
-
-    private void FlashOff()
-    {
-        sr.color = original;
-    }
     private void CancelStun()
     {
         isStun = false;
         m_Anim.SetBool("DamageTaken", false);
-
-        //CancelInvoke("FlashOn");
-        //CancelInvoke("FlashOff");
-        //sr.color = original;
     }
+
     public void Damage(int dmg)
     {
         currentHP -= dmg;
         isStun = true;
-        //InvokeRepeating("FlashOn", 0.0f, 0.2f);
-        //InvokeRepeating("FlashOff", 0.1f, 0.2f);
         m_Anim.SetBool("DamageTaken", true);
         Invoke("CancelStun", stunInterval);
-        GetComponentInChildren<Text>().text = (Get_Hp() / 2).ToString() + "♥";
+        GetComponentInChildren<Text>().text = Get_Hp().ToString() + "♥";
+    }
+
+    IEnumerator killSelf()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }
