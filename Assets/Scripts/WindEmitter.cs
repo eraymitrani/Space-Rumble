@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WindEmitter : MonoBehaviour {
 
-	public GameObject wind_square;
+	GameObject wind_square;
 	float ang;
 
 
 
 	// Use this for initialization
 	void Start () {
-		
+		wind_square = GameObject.Find ("wind_pixel");
 	}
 	
 	// Update is called once per frame
