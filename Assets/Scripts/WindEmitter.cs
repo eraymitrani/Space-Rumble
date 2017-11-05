@@ -19,7 +19,7 @@ public class WindEmitter : MonoBehaviour {
 		
 		if (GetComponentInParent<ArmRotation> ().controller.RightTrigger.IsPressed && GetComponentInParent<WeaponController>().fuel > 0) {
 			ang = GetComponentInParent<ArmRotation> ().angle * Mathf.Deg2Rad;
-			ang += Random.Range (-0.5f, 0.5f);
+			ang += Random.Range (-0.3f, 0.3f);
 
 			GameObject clone = Instantiate (wind_square, transform.position, Quaternion.identity);
 			clone.GetComponent<Rigidbody2D> ().velocity = 10 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));

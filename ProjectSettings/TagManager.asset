@@ -8,6 +8,7 @@ TagManager:
   - wall
   - hazard
   - wind
+  - killplane
   layers:
   - Default
   - TransparentFX
