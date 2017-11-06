@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireBeam : MonoBehaviour
 {
     public LayerMask mask;
+    private AudioSource aus;
+    public AudioClip ac;
     private float fireRateMax = 5f;
     private LineRenderer lr;
     private float fireRateMin = 2.5f;
@@ -15,6 +17,7 @@ public class FireBeam : MonoBehaviour
 	{
 	    lr = GetComponent<LineRenderer>();
 	    StartCoroutine(FireLaser());
+	    aus = Camera.main.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +31,10 @@ public class FireBeam : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(fireRateMin, fireRateMax));
             GetComponent<Animator>().enabled = false;
             lr.SetPosition(0, new Vector2(transform.position.x, transform.position.y - 0.5f));
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.7f);
+            aus.PlayOneShot(ac);
+            yield return new WaitForSeconds(0.1f);
+
             lr.enabled = true;
             Ray2D ray = new Ray2D(transform.position, Vector2.down);
             RaycastHit2D hit;
