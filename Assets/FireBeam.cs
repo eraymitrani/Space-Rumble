@@ -19,7 +19,6 @@ public class FireBeam : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    lr.SetPosition(0, transform.position);
 
     }
     IEnumerator FireLaser()
@@ -28,20 +27,26 @@ public class FireBeam : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(fireRateMin, fireRateMax));
             GetComponent<Animator>().enabled = false;
+            lr.SetPosition(0, new Vector2(transform.position.x, transform.position.y - 0.5f));
             yield return new WaitForSeconds(0.8f);
             lr.enabled = true;
-            Ray2D ray = new Ray2D(transform.position, transform.up * -1);
+            Ray2D ray = new Ray2D(transform.position, Vector2.down);
             RaycastHit2D hit;
             hit = Physics2D.Raycast(ray.origin, Vector2.down, Mathf.Infinity, mask);
-            if (hit.collider.tag == "Player")
+            if (hit)
             {
-                hit.collider.GetComponent<Inventory>().Damage(100);
+                lr.SetPosition(1, hit.point);
+                if (hit.collider.tag == "Player")
+                {
+                    hit.collider.GetComponent<Inventory>().Damage(100);
+
+                }
             }
+            else lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y - 8f));
 
 
             Invoke("Disable", 0.1f);
             
-            lr.SetPosition(1, hit.point);
             
 
 
