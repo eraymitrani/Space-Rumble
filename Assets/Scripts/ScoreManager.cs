@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour {
     public TextMeshProUGUI winText;
     public float delayBeforeChange = 2f;
 
+	int num_scenes = 4;
+
     int[] playerScores;
 
     PlayerSpawner playerSpawner;
@@ -54,7 +56,13 @@ public class ScoreManager : MonoBehaviour {
     IEnumerator delayReset()
     {
         yield return new WaitForSeconds(delayBeforeChange);
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+		int next_scene = SceneManager.GetActiveScene().buildIndex + 1;
+		if (next_scene < num_scenes) {
+			SceneManager.LoadScene (next_scene);
+		} else {
+			SceneManager.LoadScene ("MainMenu");
+		}
     }
 
     IEnumerator RespawnPlayer(int i)
