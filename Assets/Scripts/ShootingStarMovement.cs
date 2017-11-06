@@ -20,7 +20,8 @@ public class ShootingStarMovement : MonoBehaviour {
 
 		// Create Physics Material to control star's bounce
 		pm = new PhysicsMaterial2D ();
-		pm.bounciness = 1.0f;
+		//pm.bounciness = 1.0f;
+		pm.bounciness = 0.75f;
 		pm.friction = 0f;
 		bc.sharedMaterial = pm;
 
@@ -28,6 +29,8 @@ public class ShootingStarMovement : MonoBehaviour {
 		if (this.transform.position.x > 0) {
 			movedir = Vector2.left;
 		}
+
+		rb.velocity = (movedir + Vector2.down) * starSpeed;
 
 		StartCoroutine (Falling ());
 	}
@@ -44,13 +47,13 @@ public class ShootingStarMovement : MonoBehaviour {
 		while (true) {
 
 			// Bounce when we hit the ground
-			if (IsGrounded ()) {
-				StartCoroutine (Bouncing ());
-				yield break;
-			}
+//			if (IsGrounded ()) {
+//				StartCoroutine (Bouncing ());
+//				yield break;
+//			}
 
 			// Keep velocity roaring
-			rb.velocity = (movedir + Vector2.down) * starSpeed;
+			//rb.velocity = (movedir + Vector2.down) * starSpeed;
 
 			yield return null;
 		}
@@ -77,7 +80,8 @@ public class ShootingStarMovement : MonoBehaviour {
 	}
 
 	bool IsGrounded() {
-		return Physics2D.Raycast(this.transform.position, Vector2.down, 0.5f);
+		//return Physics2D.Raycast(this.transform.position, Vector2.down, 0.5f);
+		return false;
 	}
 
 }

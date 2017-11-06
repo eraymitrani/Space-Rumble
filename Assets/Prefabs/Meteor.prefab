@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 70773779139593326}
   - component: {fileID: 50081856326386666}
   - component: {fileID: 114522076520926024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281168278718688}
   - component: {fileID: 212057874369888250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
