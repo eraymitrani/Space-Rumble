@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/eray_scene.unity
     guid: 3dc0b71fd07f6bb48bbe49bc63552c4f
-  - enabled: 1
-    path: Assets/Scenes/nick_scene.unity
+  - enabled: 0
+    path: 
     guid: 773470ba6780448fc93156720f9cb178
+  - enabled: 1
+    path: Assets/Scenes/riley_scene_2.unity
+    guid: dad6e615e12f04749a553e80990a438f

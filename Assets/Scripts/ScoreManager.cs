@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour {
     public TextMeshProUGUI winText;
     public float delayBeforeChange = 2f;
 
-	int num_scenes = 4;
+	int num_scenes = 5;
 
     int[] playerScores;
 
