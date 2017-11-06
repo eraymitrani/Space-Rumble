@@ -15,6 +15,7 @@ public class ControllerAssign : MonoBehaviour {
     public float deadZone = 0.5f;
     public Color[] PlayerColors;
     public bool allowSinglePlayer = false;
+    public bool skipSceneSelect = true;
 
     bool p1 = false, p2 = false, p3 = false, p4 = false;
     HashSet<InputDevice> usedControllers = new HashSet<InputDevice>();
@@ -81,6 +82,11 @@ public class ControllerAssign : MonoBehaviour {
 
         if (PlayerControllers.Player1 != null && (PlayerControllers.Player2 != null || allowSinglePlayer) && InputManager.ActiveDevice.GetControl(InputControlType.Start))
         {
+            if(skipSceneSelect)
+            {
+                SceneManager.LoadScene(1);
+                return;
+            }
             TrackSelect.SetActive(true);
             gameObject.SetActive(false);
         }
