@@ -45,7 +45,8 @@ public class FireBeam : MonoBehaviour
                 if (hit.collider.tag == "Player")
                 {
                     hit.collider.GetComponent<Inventory>().Damage(100);
-
+					//Debug.Log ("HIT A PLAYER");
+					//Debug.Log (hit.collider.GetComponent<Inventory> ().Get_Hp ());
                 }
             }
             else lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y - 8f));

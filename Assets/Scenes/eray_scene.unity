@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stocks: 3
-  winText: {fileID: 0}
+  winText: {fileID: 968475620}
   delayBeforeChange: 2
 --- !u!114 &759278467
 MonoBehaviour:

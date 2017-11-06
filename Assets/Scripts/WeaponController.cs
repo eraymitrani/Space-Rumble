@@ -8,6 +8,7 @@ public class WeaponController : MonoBehaviour
 
     public LayerMask toHitMask;
     private Transform fireLoc;
+	private Vector3 fireLocVec;
 	//public GameObject wind_square;
 
 	public float fuel = 100;
@@ -16,6 +17,7 @@ public class WeaponController : MonoBehaviour
 
 	Rigidbody2D rb;
 	float x, y;
+	bool is_playing = false;
 
 	//InputDevice controller;
 
@@ -33,10 +35,13 @@ public class WeaponController : MonoBehaviour
 	void Awake ()
 	{
 	    fireLoc = transform.Find("Hose");
+		fireLocVec = transform.Find ("Hose").transform.position;
 	    if (fireLoc == null)
 	    {
 	        Debug.LogError("bad");
 	    }
+		Debug.Log (fireLoc.position);
+		Debug.Log (fireLocVec);
 	    
 	}
 	
@@ -48,7 +53,7 @@ public class WeaponController : MonoBehaviour
 
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
 		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
-            Debug.Log("Shoot");
+            //Debug.Log("Shoot");
 	        Shoot();
 		} else {
 			//refuel
@@ -57,6 +62,9 @@ public class WeaponController : MonoBehaviour
 			} else {
 				fuel += Time.deltaTime * recharge_rate;
 			}
+
+			GetComponent<AudioSource> ().Stop ();
+			is_playing = false;
 		}
 	}
 
@@ -67,7 +75,12 @@ public class WeaponController : MonoBehaviour
 			fuel = 0;
 			return;
 		}
-		Debug.Log (fuel.ToString());
+		//Debug.Log (fuel.ToString());
+
+		if (!is_playing) {
+			GetComponent<AudioSource> ().Play ();
+			is_playing = true;
+		}
 
 		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
 		Vector2 angle = new Vector2(transform.position.x,transform.position.y);
@@ -78,6 +91,9 @@ public class WeaponController : MonoBehaviour
 		angle = GetComponentInParent<ArmRotation> ().angle_vec;
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
+		Debug.DrawRay (fireLoc.position, 5 * angle);
+		Debug.Log ("fireloc is here");
+		Debug.Log (fireLoc.position);
 
         foreach (var hit in hits)
         {
@@ -90,8 +106,8 @@ public class WeaponController : MonoBehaviour
             //            Debug.Log(hit.distance);
             if (hit.rigidbody != null && dist.magnitude > 0)
             {
-				Debug.Log("hit point is " + (hit.point.x));
-				Debug.Log("fire loc is " + (fireLoc.position.x));
+				//Debug.Log("hit point is " + (hit.point.x));
+				//Debug.Log("fire loc is " + (fireLoc.position.x));
 //                if (hit.point.x < fireLoc.position.x )
 //                {
 //
@@ -107,12 +123,12 @@ public class WeaponController : MonoBehaviour
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 					hit.collider.attachedRigidbody.AddForce (new Vector2(dist.normalized.x * 500, dist.normalized.y * 50));
-					Debug.Log (hit.collider.tag);
+					//Debug.Log (hit.collider.tag);
 				}
             }
         }
 
-		Debug.Log (angle.x.ToString() + " " + angle.y.ToString());
+		//Debug.Log (angle.x.ToString() + " " + angle.y.ToString());
 		//transform.parent.parent.GetComponent<Rigidbody2D> ().AddForce(new Vector2(angle.x * 0.5 * -self_power, angle.y * -self_power));
 
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
