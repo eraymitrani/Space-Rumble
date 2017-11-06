@@ -45,6 +45,7 @@ namespace UnityStandardAssets._2D
         private void Update()
         {
 			if (controller == null) {
+				controller = PlayerControllers.getPlayerController (player_num);
 				return;
 			}
 

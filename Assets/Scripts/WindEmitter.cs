@@ -16,7 +16,6 @@ public class WindEmitter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if (GetComponentInParent<ArmRotation> ().controller.RightTrigger.IsPressed && GetComponentInParent<WeaponController>().fuel > 0) {
 			ang = GetComponentInParent<ArmRotation> ().angle * Mathf.Deg2Rad;
 			ang += Random.Range (-0.3f, 0.3f);
