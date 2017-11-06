@@ -10,11 +10,13 @@ public class FireBeam : MonoBehaviour
     private float fireRateMax = 5f;
     private LineRenderer lr;
     private float fireRateMin = 2.5f;
-
+    private Animator an;
     private bool laserOn = true;
 	// Use this for initialization
 	void Start ()
 	{
+	    an = GetComponent<Animator>();
+	    an.enabled = false;
 	    lr = GetComponent<LineRenderer>();
 	    StartCoroutine(FireLaser());
 	    aus = Camera.main.GetComponent<AudioSource>();
@@ -26,6 +28,15 @@ public class FireBeam : MonoBehaviour
     }
     IEnumerator FireLaser()
     {
+        yield return new WaitForSeconds(2.2f);
+        lr.SetPosition(0, new Vector2(transform.position.x, transform.position.y - 0.5f));
+        yield return new WaitForSeconds(0.7f);
+        aus.PlayOneShot(ac);
+        yield return new WaitForSeconds(0.1f);
+        lr.enabled = true;
+        lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y - 12f));
+        Invoke("Disable", 0.1f);
+
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(fireRateMin, fireRateMax));
@@ -34,7 +45,6 @@ public class FireBeam : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
             aus.PlayOneShot(ac);
             yield return new WaitForSeconds(0.1f);
-
             lr.enabled = true;
             Ray2D ray = new Ray2D(transform.position, Vector2.down);
             RaycastHit2D hit;
@@ -49,7 +59,7 @@ public class FireBeam : MonoBehaviour
 					//Debug.Log (hit.collider.GetComponent<Inventory> ().Get_Hp ());
                 }
             }
-            else lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y - 8f));
+            else lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y - 12f));
 
 
             Invoke("Disable", 0.1f);
