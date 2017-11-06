@@ -7,13 +7,6 @@ using UnityEngine.UI;
 
 
 public class GameLoopManager : MonoBehaviour {
-
-    ScoreManager scoreManager;
-
-	// Use this for initialization
-	void Start () {
-        scoreManager = GetComponent<ScoreManager>();
-	}
 	
 	// Update is called once per frame
 	void Update () {

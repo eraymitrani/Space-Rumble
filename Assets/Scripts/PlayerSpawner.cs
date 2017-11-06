@@ -23,7 +23,9 @@ public class PlayerSpawner : MonoBehaviour {
         for (int i = 0; i < players; ++i)
         {
             GameObject player = Instantiate(Player, Spawns[i].transform);
-            player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num = i + 1;
+            UnityStandardAssets._2D.Platformer2DUserControl uc = player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>();
+            uc.player_num = i + 1;
+            uc.enabled = false;
             player.GetComponent<Inventory>().scoreManager = scoreManager;
             StockPanels[i].SetActive(true);
             Color stockBg = Color.black;
@@ -74,5 +76,17 @@ public class PlayerSpawner : MonoBehaviour {
         stock.text = "";
         for (int i = 0; i < num; ++i)
             stock.text += stockText;
+    }
+
+    public void enablePlayers()
+    {
+        foreach(GameObject spawn in Spawns)
+        {
+            if (spawn == null)
+                continue;
+            if (spawn.GetComponentInChildren<UnityStandardAssets._2D.Platformer2DUserControl>() == null)
+                continue;
+            spawn.GetComponentInChildren<UnityStandardAssets._2D.Platformer2DUserControl>().enabled = true;
+        }
     }
 }

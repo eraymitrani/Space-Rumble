@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     private int currentHP;
-    public int maxHP = 5;
+    public int maxHP = 1;
     public bool isStun;
     private float stunInterval = 0.5f;
     private SpriteRenderer sr;
-    private Color original;
     public ScoreManager scoreManager;
     private UnityStandardAssets._2D.Platformer2DUserControl userControl;
     private Animator m_Anim;
@@ -27,7 +26,6 @@ public class Inventory : MonoBehaviour
         {
             Debug.LogWarning("Sprite not found");
         }
-	    original = sr.color;
         userControl = GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>();
     }
 
