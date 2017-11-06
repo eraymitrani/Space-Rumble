@@ -137,7 +137,7 @@ public class WeaponController : MonoBehaviour
 		if (y > 0) {
 			rb.velocity = new Vector2 (rb.velocity.x, 3);
 		} else {
-			rb.velocity = new Vector2 (rb.velocity.x, -7);
+			//rb.velocity = new Vector2 (rb.velocity.x, -7);
 		}
 
 		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air

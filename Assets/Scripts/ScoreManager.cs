@@ -67,7 +67,7 @@ public class ScoreManager : MonoBehaviour {
 
     IEnumerator RespawnPlayer(int i)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         playerSpawner.respawnPlayer(i - 1);
     }
 }
