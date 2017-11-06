@@ -1,2 +1,3 @@
 http://devassets.com/assets/2d-mega-pack/ ---Player sprite + background image + weapon sprite + arm sprite + main menu music + template for arm rotation code (modified for controllers)
-https://opengameart.org/content/insect-or-alien-scream ---- Alien beam sound
+https://opengameart.org/content/laser-rifle ---- Alien beam sound
+https://opengameart.org/content/act-of-war ---- Eray Scene Music
