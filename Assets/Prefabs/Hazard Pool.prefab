@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4036684589242586}
   - component: {fileID: 114532653302900368}
   - component: {fileID: 114481123434360628}
+  - component: {fileID: 114017157567662098}
   m_Layer: 0
   m_Name: Hazard Pool
   m_TagString: Untagged
@@ -41,6 +42,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114017157567662098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847259185554364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6dd9335e17419da85f6b28b8a265f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingStar: {fileID: 1510003557638308, guid: 03346e34de81e42d4be23a103e5f5711,
+    type: 2}
+  spawnWait: 3
 --- !u!114 &114481123434360628
 MonoBehaviour:
   m_ObjectHideFlags: 1
