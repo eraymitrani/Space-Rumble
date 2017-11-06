@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
         isStun = true;
         m_Anim.SetBool("DamageTaken", true);
         Invoke("CancelStun", stunInterval);
-        GetComponentInChildren<Text>().text = Get_Hp().ToString() + "♥";
+        //GetComponentInChildren<Text>().text = Get_Hp().ToString() + "♥";
     }
 
     IEnumerator killSelf()

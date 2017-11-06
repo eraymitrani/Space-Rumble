@@ -550,7 +550,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   fuel: 100
   power: 80
-  self_power: 30
+  self_power: 1.5
 --- !u!114 &114562546994337628
 MonoBehaviour:
   m_ObjectHideFlags: 1
