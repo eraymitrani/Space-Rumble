@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using InControl;
-using UnityEngine.UI;
 
 
 public class GameLoopManager : MonoBehaviour {
@@ -12,7 +11,7 @@ public class GameLoopManager : MonoBehaviour {
 	void Update () {
 
 		if (InputManager.ActiveDevice.GetControl(InputControlType.Back)){
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+            Time.timeScale = Time.timeScale == 1 ? 0 : 1;
 		}
 
 		if (InputManager.ActiveDevice.GetControl(InputControlType.Start)) {
