@@ -114,6 +114,10 @@ namespace UnityStandardAssets._2D
                     Flip();
                 }
             }
+
+			//XXX jump code
+			/////////////////////////////////////////////////////////////////////////
+			/*
             // If the player should jump...
             if (m_Grounded && jump == 1)
             {
@@ -126,6 +130,8 @@ namespace UnityStandardAssets._2D
 				// stop their upwards motion
 				m_Rigidbody2D.velocity = Vector2.zero;
 			}
+			*/
+			/////////////////////////////////////////////////////////////////////////
         }
 
 

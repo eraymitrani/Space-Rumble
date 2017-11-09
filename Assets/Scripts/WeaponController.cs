@@ -52,7 +52,11 @@ public class WeaponController : MonoBehaviour
 		}
 
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
-		if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
+
+		if (GetComponentInParent<ArmRotation>().controller.LeftTrigger.WasPressed){
+			Debug.Log ("Burst");
+			Burst ();
+		} else if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
             //Debug.Log("Shoot");
 	        Shoot();
 		} else {
@@ -145,4 +149,50 @@ public class WeaponController : MonoBehaviour
 		}
 			
     }
+
+	void Burst(){
+		if (fuel < 50) {
+			return;
+		} else {
+			fuel -= 50;
+		}
+
+
+		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
+		Vector2 angle = GetComponentInParent<ArmRotation> ().angle_vec;
+
+		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
+		Debug.DrawRay (fireLoc.position, 5 * angle);
+		Debug.Log ("fireloc is here");
+		Debug.Log (fireLoc.position);
+
+		foreach (var hit in hits) {
+			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
+
+			if (hit.rigidbody != null && dist.magnitude > 0) {
+				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
+					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
+					hit.collider.attachedRigidbody.AddForce (new Vector2(dist.normalized.x * 5000, dist.normalized.y * 500));
+				}
+			}
+		}
+
+		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
+		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
+
+		if (y > 0) {
+			rb.velocity = new Vector2 (rb.velocity.x, 3);
+		} else {
+			//rb.velocity = new Vector2 (rb.velocity.x, -7);
+		}
+
+//		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
+//			rb.AddForce(angle * -1000);
+//		}
+
+		if (angle.y < -0.5) {
+			Debug.Log (angle.y);
+			rb.AddForce (angle * -1000);
+		}
+	}
 }
