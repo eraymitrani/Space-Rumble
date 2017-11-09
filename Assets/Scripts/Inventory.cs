@@ -31,10 +31,11 @@ public class Inventory : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-	    if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
+        m_Anim.SetInteger("currentHp", currentHP);
+	    if (currentHP <= 0)
 	    {
             scoreManager.addScore(userControl.player_num, -1);
-            m_Anim.SetBool("Dead", true);
+           // m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
             StartCoroutine(killSelf());
 	    }
