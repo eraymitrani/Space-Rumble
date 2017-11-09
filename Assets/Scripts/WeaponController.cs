@@ -155,6 +155,7 @@ public class WeaponController : MonoBehaviour
 			return;
 		} else {
 			fuel -= 50;
+			GetComponent<WindEmitter> ().BurstParticles ();
 		}
 
 

@@ -26,31 +26,35 @@ public class WindEmitter : MonoBehaviour {
 		}
 
 		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasPressed && GetComponentInParent<WeaponController> ().fuel >= 0) {
-			Debug.Log (GetComponentInParent<WeaponController> ().fuel);
-			clones[0] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[1] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[2] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[3] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[4] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[5] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[6] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[7] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[8] = Instantiate (wind_square, transform.position, Quaternion.identity);
-			clones[9] = Instantiate (wind_square, transform.position, Quaternion.identity);
-
-			float inc = -0.2f;
-
-			foreach (var clone in clones) {
-				ang = GetComponentInParent<ArmRotation> ().angle * Mathf.Deg2Rad;
-				ang += inc;
-				inc += 0.04f;
-
-				clone.GetComponent<Rigidbody2D> ().velocity = 30 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));
-				clone.GetComponent<WindLifetime> ().is_alive = true;
-			}
+			
 				
 		}
 
 
+	}
+
+	public void BurstParticles(){
+		Debug.Log (GetComponentInParent<WeaponController> ().fuel);
+		clones [0] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [1] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [2] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [3] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [4] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [5] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [6] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [7] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [8] = Instantiate (wind_square, transform.position, Quaternion.identity);
+		clones [9] = Instantiate (wind_square, transform.position, Quaternion.identity);
+
+		float inc = -0.2f;
+
+		foreach (var clone in clones) {
+			ang = GetComponentInParent<ArmRotation> ().angle * Mathf.Deg2Rad;
+			ang += inc;
+			inc += 0.04f;
+
+			clone.GetComponent<Rigidbody2D> ().velocity = 30 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));
+			clone.GetComponent<WindLifetime> ().is_alive = true;
+		}
 	}
 }
