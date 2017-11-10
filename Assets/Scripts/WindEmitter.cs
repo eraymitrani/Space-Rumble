@@ -23,7 +23,12 @@ public class WindEmitter : MonoBehaviour {
 			GameObject clone = Instantiate (wind_square, transform.position, Quaternion.identity);
 			clone.GetComponent<Rigidbody2D> ().velocity = 10 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));
 			clone.GetComponent<WindLifetime> ().is_alive = true;
-		}
+
+			//XXX comment this out to keep white spray
+			clone.GetComponent<SpriteRenderer> ().material = 
+				GameObject.Find ("GameStateController").GetComponent<PlayerSpawner> ().Colors [
+					GetComponentInParent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num - 1];
+			}
 
 		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasPressed && GetComponentInParent<WeaponController> ().fuel >= 0) {
 			
@@ -55,6 +60,11 @@ public class WindEmitter : MonoBehaviour {
 
 			clone.GetComponent<Rigidbody2D> ().velocity = 30 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));
 			clone.GetComponent<WindLifetime> ().is_alive = true;
+
+			//XXX comment this out to keep white spray
+			clone.GetComponent<SpriteRenderer> ().material = 
+				GameObject.Find ("GameStateController").GetComponent<PlayerSpawner> ().Colors [
+					GetComponentInParent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num - 1];
 		}
 	}
 }
