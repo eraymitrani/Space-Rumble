@@ -38,9 +38,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update () {
         m_Anim.SetInteger("currentHp", currentHP);
-	    if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
+        InputManager.ActiveDevice.Vibrate(0.5f);
+        if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
 	        InputManager.ActiveDevice.Vibrate(1f);
+            Handheld.Vibrate();
+            InputManager.ActiveDevice.Vibrate(1f,1f);
             scoreManager.addScore(userControl.player_num, -1);
             m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
