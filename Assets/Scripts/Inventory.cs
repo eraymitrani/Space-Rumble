@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     public ScoreManager scoreManager;
     private UnityStandardAssets._2D.Platformer2DUserControl userControl;
     private Animator m_Anim;
+	private bool is_dead = false;
 
     // Use this for initialization
     void Start ()
@@ -32,8 +33,9 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update () {
         m_Anim.SetInteger("currentHp", currentHP);
-	    if (currentHP <= 0)
+	    if (currentHP <= 0 && !is_dead) 
 	    {
+			is_dead = true;
             scoreManager.addScore(userControl.player_num, -1);
            // m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
