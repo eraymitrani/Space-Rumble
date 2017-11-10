@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update () {
         m_Anim.SetInteger("currentHp", currentHP);
-        InputManager.ActiveDevice.Vibrate(0.5f);
+        InputManager.ActiveDevice.Vibrate(10000f);
         if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
 	        InputManager.ActiveDevice.Vibrate(1f);
