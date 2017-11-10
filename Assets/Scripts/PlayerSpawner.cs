@@ -64,6 +64,9 @@ public class PlayerSpawner : MonoBehaviour {
         GameObject player = Instantiate(Player, Spawns[i].transform);
         player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num = i + 1;
         player.GetComponent<Inventory>().scoreManager = scoreManager;
+
+		player.GetComponent<Inventory> ().isImmovable = true;
+
         foreach (SpriteRenderer sr in player.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.material = Colors[i];

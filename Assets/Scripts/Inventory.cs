@@ -9,12 +9,16 @@ public class Inventory : MonoBehaviour
     private int currentHP;
     public int maxHP = 1;
     public bool isStun;
+	public bool isImmovable = false;
     private float stunInterval = 0.5f;
     private SpriteRenderer sr;
     public ScoreManager scoreManager;
     private UnityStandardAssets._2D.Platformer2DUserControl userControl;
     private Animator m_Anim;
 	private bool is_dead = false;
+
+	float immov_timer = 0f;
+	float immov_time = 3f; //sorry for not using IEnumerators ¯\_(ツ)_/¯
 
     // Use this for initialization
     void Start ()
@@ -41,6 +45,28 @@ public class Inventory : MonoBehaviour
             userControl.enabled = false;
             StartCoroutine(killSelf());
 	    }
+
+		//immovability shield
+		if (isImmovable) {
+			Debug.DrawRay (transform.position, 5 * Vector3.up);
+
+			gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+
+			immov_timer += Time.deltaTime;
+			if (immov_timer >= immov_time) {
+				isImmovable = false;
+				immov_timer = 0;
+			}
+
+			if (GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.AnyButton.WasPressed ||
+			    Mathf.Abs (GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.LeftStickX) > 0.05f ||
+			    GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.RightTrigger.WasPressed ||
+			    GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.LeftTrigger.WasPressed) {
+				isImmovable = false;
+			}
+		} else {
+			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		}
 	}
 
     public int Get_Hp()
