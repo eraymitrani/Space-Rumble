@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -37,11 +38,11 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update () {
         m_Anim.SetInteger("currentHp", currentHP);
-	    if (currentHP <= 0 && !is_dead) 
+	    if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
-			is_dead = true;
+	        InputManager.ActiveDevice.Vibrate(1f);
             scoreManager.addScore(userControl.player_num, -1);
-           // m_Anim.SetBool("Dead", true);
+            m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
             StartCoroutine(killSelf());
 	    }
