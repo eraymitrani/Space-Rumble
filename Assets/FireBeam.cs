@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FireBeam : MonoBehaviour
 {
@@ -12,8 +14,12 @@ public class FireBeam : MonoBehaviour
     private float fireRateMin = 2.5f;
     private Animator an;
     private bool laserOn = true;
-	// Use this for initialization
-	void Start ()
+
+    private GameObject[] targetPool;
+
+    private GameObject target;
+    // Use this for initialization
+    void Start ()
 	{
 	    an = GetComponent<Animator>();
 	    an.enabled = false;
@@ -24,6 +30,16 @@ public class FireBeam : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+	    targetPool = GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log(targetPool.Length);
+	    try
+	    {
+	        target = targetPool[Random.Range(0, targetPool.Length)];
+	    }
+	    catch (IndexOutOfRangeException)
+	    {
+	       
+	    }
 
     }
     IEnumerator FireLaser()
@@ -40,12 +56,15 @@ public class FireBeam : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(fireRateMin, fireRateMax));
+            //targetPool = new GameObject[0];
+    
             GetComponent<Animator>().enabled = false;
             lr.SetPosition(0, new Vector2(transform.position.x, transform.position.y - 0.5f));
             yield return new WaitForSeconds(0.7f);
             aus.PlayOneShot(ac);
             yield return new WaitForSeconds(0.1f);
             lr.enabled = true;
+            Vector2 targetLoc = new Vector2(target.transform.position.x, target.transform.position.y);
             Ray2D ray = new Ray2D(transform.position, Vector2.down);
             RaycastHit2D hit;
             hit = Physics2D.Raycast(ray.origin, Vector2.down, Mathf.Infinity, mask);
