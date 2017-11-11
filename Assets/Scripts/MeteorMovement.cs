@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeteorMovement : MonoBehaviour {
 
-	public delegate IEnumerator MeteorCrash();
-	public static MeteorCrash meteorcrash;
+	public delegate void MeteorCrash();
+	event MeteorCrash meteorcrash;
 
 
     public int meteorSpeed = 2;
@@ -16,7 +16,6 @@ public class MeteorMovement : MonoBehaviour {
 	void Start () {
 		rb = this.GetComponent<Rigidbody2D> ();
 
-		//meteorcrash += Explode;
 
 		if (this.transform.position.x > 0) {
 			movedir = Vector2.left + Vector2.down;
@@ -25,6 +24,14 @@ public class MeteorMovement : MonoBehaviour {
 		else {
 			movedir = Vector2.right + Vector2.down;
 		}
+
+		// Explode
+		meteorcrash += Explode;
+
+		// Meteor crashing can shake camera?
+		CameraShake shake = FindObjectOfType<CameraShake>();
+		if (shake)
+			meteorcrash += shake.Shake;
 	}
 	
 	void Update () {
@@ -35,7 +42,7 @@ public class MeteorMovement : MonoBehaviour {
 //		if (other.collider.tag == "ground") {
 //			//Explode ();
 //		}
-		Explode();
+		meteorcrash();
 	}
 
 	void Explode() {
