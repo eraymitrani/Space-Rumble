@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace UnityStandardAssets._2D
@@ -20,6 +21,7 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D; // refrence to sprite so we can change it
         private Transform playerSprite;
         private Inventory inv;
+        private LineRenderer lr;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
         private void Awake()
@@ -28,6 +30,7 @@ namespace UnityStandardAssets._2D
             m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
             inv = GetComponent<Inventory>();
+            lr = GetComponent<LineRenderer>();
             m_Anim = GetComponent<Animator>();
             playerSprite = transform.Find("Sprites");
             if (playerSprite == null)
@@ -64,13 +67,25 @@ namespace UnityStandardAssets._2D
 
             // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
-
-			//this isn't great, but it does one-hit-kill
-			if (transform.position.y < -5) {
+            if (m_Rigidbody2D.velocity.y < -40)
+            {
+                StartCoroutine(GroundPound());
+            }
+            //this isn't great, but it does one-hit-kill
+            if (transform.position.y < -5) {
 				GetComponent<Inventory> ().Damage (100);
 			}
         }
 
+        IEnumerator GroundPound()
+        {
+            
+            lr.SetPosition(0, new Vector2(transform.position.x, transform.position.y + 0.5f));
+            lr.SetPosition(1, new Vector2(transform.position.x, transform.position.y + 4f));
+            lr.enabled = true;
+            yield return new WaitForSeconds(0.3f);
+            lr.enabled = false;
+        }
 
         public void Move(float move, bool crouch, int jump)
         {

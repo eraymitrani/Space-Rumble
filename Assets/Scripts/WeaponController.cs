@@ -40,8 +40,8 @@ public class WeaponController : MonoBehaviour
 	    {
 	        Debug.LogError("bad");
 	    }
-		Debug.Log (fireLoc.position);
-		Debug.Log (fireLocVec);
+		//Debug.Log (fireLoc.position);
+		//Debug.Log (fireLocVec);
 	    
 	}
 	
@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
 		Debug.DrawRay (fireLoc.position, 5 * angle);
 		Debug.Log ("fireloc is here");
-		Debug.Log (fireLoc.position);
+		//Debug.Log (fireLoc.position);
 
         foreach (var hit in hits)
         {

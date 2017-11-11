@@ -9,8 +9,9 @@ public class ScoreManager : MonoBehaviour {
     public int stocks = 3;
     public TextMeshProUGUI winText;
     public float delayBeforeChange = 2f;
+    private bool[] alive;
 
-	int num_scenes = 4;
+    int num_scenes = 4;
 
     int[] playerScores;
 
@@ -34,7 +35,7 @@ public class ScoreManager : MonoBehaviour {
         if (playerScores[player - 1] + stocks <= 0)
         {
             playersDead[player - 1] = true;
-            bool[] alive = Array.FindAll(playersDead, a => a == false);
+            alive = Array.FindAll(playersDead, a => a == false);
             if (alive.Length <= 1)
                 announceWinner();
             return;
@@ -43,6 +44,10 @@ public class ScoreManager : MonoBehaviour {
         StartCoroutine(RespawnPlayer(player));
     }
 
+    public bool[] getDead()
+    {
+        return playersDead;
+    }
     public void announceWinner()
     {
         int[] sortedScores = new int[numPlayers];
