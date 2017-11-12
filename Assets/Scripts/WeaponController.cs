@@ -126,8 +126,13 @@ public class WeaponController : MonoBehaviour
 
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
-					if(!hit.collider.gameObject.GetComponent<Inventory>().isImmovable){
-						hit.collider.attachedRigidbody.AddForce (new Vector2(dist.normalized.x * 500, dist.normalized.y * 50));
+
+					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
+					}
+
+					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable && hit.collider.gameObject.GetComponent<Inventory> () != null) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
 						//Debug.Log (hit.collider.tag);
 					}
 				}
@@ -175,6 +180,10 @@ public class WeaponController : MonoBehaviour
 			if (hit.rigidbody != null && dist.magnitude > 0) {
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
+					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
+					}
+
 					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
 						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
 					}

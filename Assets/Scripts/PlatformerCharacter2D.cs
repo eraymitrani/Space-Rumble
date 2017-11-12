@@ -69,6 +69,10 @@ namespace UnityStandardAssets._2D
 			if (transform.position.y < -5) {
 				GetComponent<Inventory> ().Damage (100);
 			}
+			//checks left and right
+			if (Mathf.Abs (transform.position.x) > 13.5f) {
+				GetComponent<Inventory> ().Damage (100);
+			}
         }
 
 
