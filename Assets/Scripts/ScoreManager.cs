@@ -43,6 +43,14 @@ public class ScoreManager : MonoBehaviour {
         StartCoroutine(RespawnPlayer(player));
     }
 
+    //Returns -1 for non-existant player
+    public int getStocks(int player)
+    {
+        if (player > numPlayers)
+            return -1;
+        return stocks + playerScores[player - 1];
+    }
+
     public void announceWinner()
     {
         int[] sortedScores = new int[numPlayers];
