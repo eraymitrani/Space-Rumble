@@ -19,6 +19,10 @@ public class WeaponController : MonoBehaviour
 	float x, y;
 	bool is_playing = false;
 
+	public bool is_powered_up = false;
+	float powered_up_timer = 0;
+	float powered_up_time = 3;
+
 	//InputDevice controller;
 
 //	void Start(){
@@ -61,6 +65,10 @@ public class WeaponController : MonoBehaviour
 	        Shoot();
 		} else {
 			//refuel
+			if (is_powered_up) {
+				fuel = 100;
+			}
+
 			if (fuel > 100) {
 				fuel = 100;
 			} else {
@@ -70,11 +78,25 @@ public class WeaponController : MonoBehaviour
 			GetComponent<AudioSource> ().Stop ();
 			is_playing = false;
 		}
+
+		if (is_powered_up) {
+			powered_up_timer += Time.deltaTime;
+			if (powered_up_timer >= powered_up_time) {
+				is_powered_up = false;
+				powered_up_timer = 0;
+			}
+		}
 	}
 
     void Shoot()
     {
-		fuel -= Time.deltaTime * consume_rate;
+		if (!is_powered_up) {
+			fuel -= Time.deltaTime * consume_rate;
+		} else {
+			//Debug.Log ("powered up!");
+			fuel = 100;
+		}
+
 		if (fuel < 0) {
 			fuel = 0;
 			return;

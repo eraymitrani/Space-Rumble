@@ -43,11 +43,19 @@ namespace UnityStandardAssets._2D
         }
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "hazard")
-            {
-                inv.Damage(1);
-            }
+			if (other.tag == "hazard") {
+				inv.Damage (1);
+			} else if (other.tag == "powerup") {
+				//powerup stuff
+				GetComponentInChildren<WeaponController>().is_powered_up = true;
+				Destroy (other.gameObject);
+			}
         }
+		void OnCollisionEnter2D(Collision2D other){
+			if (other.gameObject.tag == "hazard") {
+				inv.Damage (1);
+			}
+		}
         private void FixedUpdate()
         {
             m_Grounded = false;

@@ -61,8 +61,7 @@ public class Inventory : MonoBehaviour
 				immov_timer = 0;
 			}
 
-			if (GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.AnyButton.WasPressed ||
-			    Mathf.Abs (GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.LeftStickX) > 0.05f ||
+			if (Mathf.Abs (GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.LeftStickX) > 0.05f ||
 			    GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.RightTrigger.WasPressed ||
 			    GetComponent<UnityStandardAssets._2D.Platformer2DUserControl> ().controller.LeftTrigger.WasPressed) {
 				isImmovable = false;

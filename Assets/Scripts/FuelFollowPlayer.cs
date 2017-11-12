@@ -20,5 +20,6 @@ public class FuelFollowPlayer : MonoBehaviour {
 
 	void Update(){
 		GetComponent<Slider> ().value = transform.parent.parent.GetComponentInChildren<WeaponController> ().fuel;
+		//XXX todo, have some aesthetic to show that no fuel is being consumed, like change fuel color to gold or something
 	}
 }
