@@ -42,7 +42,6 @@ public class Inventory : MonoBehaviour
         if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
 	        InputManager.ActiveDevice.Vibrate(1f);
-            Handheld.Vibrate();
             InputManager.ActiveDevice.Vibrate(1f,1f);
             scoreManager.addScore(userControl.player_num, -1);
             m_Anim.SetBool("Dead", true);
