@@ -23,11 +23,11 @@ GameObject:
   - component: {fileID: 95347515672166860}
   m_Layer: 0
   m_Name: Black Hole
-  m_TagString: Untagged
+  m_TagString: hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4763101695466878
 Transform:
   m_ObjectHideFlags: 1

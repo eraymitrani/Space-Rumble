@@ -9,6 +9,7 @@ TagManager:
   - hazard
   - wind
   - killplane
+  - space rock
   layers:
   - Default
   - TransparentFX
