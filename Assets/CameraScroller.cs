@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class CameraScroller : MonoBehaviour {
 
-	public int stageRightBoundary = 10;
-	public int stageLeftBoundary = -10;
-	public int stageTopBoundary = 10;
-	public int stageBottomBoundary = 0;
+	public float min_width = 5;
+	public float min_height = 5;
+	public float max_width = 10;
+	public float max_height = 10;
+
+	public float buffer = 2;
 
 	private GameObject[] players;
 
 	void Start () {
-		players = GameObject.FindGameObjectsWithTag ("Player");
+		players = GameObject.FindGameObjectsWithTag ("space rock");
 	}
 		
 	void Update () {
 
 		// Find the most extreme x and y coordinates of each player
-		float minX = 0;
-		float minY = 0;
-		float maxX = 0;
-		float maxY = 0;
+		float minX = 0f;
+		float minY = 0f;
+		float maxX = 0f;
+		float maxY = 0f;
 
 		for (int i = 0; i < players.Length; ++i) {
 			// x coord
@@ -41,5 +43,14 @@ public class CameraScroller : MonoBehaviour {
 			}
 		}
 
+		float width = maxX - minX;
+		float height = maxY - minY;
+
+		// Find the middle of the max view, the current view, and the min view
+
+
+
+
+		Camera.main.rect = new Rect (Camera.main.rect.x, Camera.main.rect.y, width + buffer, height + buffer);
 	}
 }
