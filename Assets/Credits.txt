@@ -2,3 +2,4 @@ http://devassets.com/assets/2d-mega-pack/ ---Player sprite + background image + 
 https://opengameart.org/content/laser-rifle ---- Alien beam sound
 https://opengameart.org/content/act-of-war ---- Arena Music
 https://opengameart.org/content/wind1 ---- Gas gun sound
+https://opengameart.org/content/spiky-monster-obstacle --- Spiky Ball Sprite (modified to remove the face so it fits better with theme)
