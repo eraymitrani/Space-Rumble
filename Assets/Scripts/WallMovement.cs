@@ -13,7 +13,7 @@ public class WallMovement : MonoBehaviour {
 	void Start () {
 		timer = 0;
 		wait_time = 10;
-		end_time = 28;
+		end_time = 25;
 	}
 	
 	// Update is called once per frame
