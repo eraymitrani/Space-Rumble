@@ -51,7 +51,7 @@ public class WeaponController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponentInParent<ArmRotation> ().controller == null) {
+		if (GetComponentInParent<ArmRotation> ().controller == null || GetComponentInParent<Animator>().GetBool("Dead") == true) {
 			return;
 		}
 
@@ -69,7 +69,7 @@ public class WeaponController : MonoBehaviour
 				fuel = 100;
 			}
 
-			if (fuel > 100) {
+			else if (fuel > 100) {
 				fuel = 100;
 			} else {
 				fuel += Time.deltaTime * recharge_rate;
