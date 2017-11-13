@@ -2920,6 +2920,7 @@ GameObject:
   - component: {fileID: 1068956907}
   - component: {fileID: 1068956906}
   - component: {fileID: 1068956905}
+  - component: {fileID: 1068956908}
   m_Layer: 0
   m_Name: PowerupSpawner
   m_TagString: Untagged
@@ -2933,7 +2934,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068956904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eb327ec30694d288e887ed164a9a0a, type: 3}
   m_Name: 
@@ -2944,6 +2945,10 @@ MonoBehaviour:
   distanceY: 0
   startIn: 0
   endIn: 60
+  t: {fileID: 0}
+  pos1: {x: 0, y: 0, z: 0}
+  pos2: {x: 0, y: 0, z: 0}
+  start: 0
 --- !u!114 &1068956906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,6 +2980,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068956908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1068956904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad87915948156824a958a6fdae7d2165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  distanceZ: 0
+  distaneX: 16
+  distanceY: 0
+  startIn: 0
+  endIn: 0
 --- !u!1 &1069514795
 GameObject:
   m_ObjectHideFlags: 0
