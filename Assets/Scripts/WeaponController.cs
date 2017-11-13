@@ -12,8 +12,8 @@ public class WeaponController : MonoBehaviour
 	//public GameObject wind_square;
 
 	public float fuel = 100;
-	int consume_rate = 75;		//higher is faster
-	int recharge_rate = 50;		//lower is slower
+	int consume_rate = 120;		//higher is faster
+	int recharge_rate = 25;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
@@ -150,11 +150,11 @@ public class WeaponController : MonoBehaviour
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
 					}
 
-					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable && hit.collider.gameObject.GetComponent<Inventory> () != null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
+					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
 						//Debug.Log (hit.collider.tag);
 					}
 				}
@@ -203,11 +203,11 @@ public class WeaponController : MonoBehaviour
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
 					}
 
 					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
 					}
 				}
 			}
