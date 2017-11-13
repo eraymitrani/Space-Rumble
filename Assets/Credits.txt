@@ -3,3 +3,5 @@ https://opengameart.org/content/laser-rifle ---- Alien beam sound
 https://opengameart.org/content/act-of-war ---- Arena Music
 https://opengameart.org/content/wind1 ---- Gas gun sound
 https://opengameart.org/content/spiky-monster-obstacle --- Spiky Ball Sprite (modified to remove the face so it fits better with theme)
+http://pancakebobapps.wix.com/apps, https://opengameart.org/content/powerups ---- energy powerup sprite
+https://opengameart.org/content/simple-spike ---- spikes

@@ -12,12 +12,16 @@ public class WeaponController : MonoBehaviour
 	//public GameObject wind_square;
 
 	public float fuel = 100;
-	int consume_rate = 75;		//higher is faster
-	int recharge_rate = 50;		//lower is slower
+	int consume_rate = 120;		//higher is faster
+	int recharge_rate = 25;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
 	bool is_playing = false;
+
+	public bool is_powered_up = false;
+	float powered_up_timer = 0;
+	float powered_up_time = 3;
 
 	//InputDevice controller;
 
@@ -47,7 +51,7 @@ public class WeaponController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponentInParent<ArmRotation> ().controller == null) {
+		if (GetComponentInParent<ArmRotation> ().controller == null || GetComponentInParent<Animator>().GetBool("Dead") == true) {
 			return;
 		}
 
@@ -61,7 +65,11 @@ public class WeaponController : MonoBehaviour
 	        Shoot();
 		} else {
 			//refuel
-			if (fuel > 100) {
+			if (is_powered_up) {
+				fuel = 100;
+			}
+
+			else if (fuel > 100) {
 				fuel = 100;
 			} else {
 				fuel += Time.deltaTime * recharge_rate;
@@ -70,11 +78,25 @@ public class WeaponController : MonoBehaviour
 			GetComponent<AudioSource> ().Stop ();
 			is_playing = false;
 		}
+
+		if (is_powered_up) {
+			powered_up_timer += Time.deltaTime;
+			if (powered_up_timer >= powered_up_time) {
+				is_powered_up = false;
+				powered_up_timer = 0;
+			}
+		}
 	}
 
     void Shoot()
     {
-		fuel -= Time.deltaTime * consume_rate;
+		if (!is_powered_up) {
+			fuel -= Time.deltaTime * consume_rate;
+		} else {
+			//Debug.Log ("powered up!");
+			fuel = 100;
+		}
+
 		if (fuel < 0) {
 			fuel = 0;
 			return;
@@ -126,8 +148,13 @@ public class WeaponController : MonoBehaviour
 
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
-					if(!hit.collider.gameObject.GetComponent<Inventory>().isImmovable){
-						hit.collider.attachedRigidbody.AddForce (new Vector2(dist.normalized.x * 500, dist.normalized.y * 50));
+
+					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
+					}
+
+					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
 						//Debug.Log (hit.collider.tag);
 					}
 				}
@@ -175,8 +202,12 @@ public class WeaponController : MonoBehaviour
 			if (hit.rigidbody != null && dist.magnitude > 0) {
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
+					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
+					}
+
 					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
 					}
 				}
 			}

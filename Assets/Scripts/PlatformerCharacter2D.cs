@@ -43,11 +43,25 @@ namespace UnityStandardAssets._2D
         }
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "hazard")
-            {
-                inv.Damage(1);
-            }
+			if (other.tag == "hazard") {
+				inv.Damage (1);
+			} else if (other.tag == "powerup") {
+				//powerup stuff
+				if (other.name == "EnergyPowerup" || other.name == "EnergyPowerup(Clone)") {
+					GetComponentInChildren<WeaponController> ().is_powered_up = true;
+					Destroy (other.gameObject);
+				} else if (other.name == "ShieldPowerup" || other.name == "ShieldPowerup(Clone)") {
+					//do something here
+					GetComponent<Inventory>().is_powered_up = true;
+					Destroy (other.gameObject);
+				}
+			}
         }
+		void OnCollisionEnter2D(Collision2D other){
+			if (other.gameObject.tag == "hazard") {
+				inv.Damage (1);
+			}
+		}
         private void FixedUpdate()
         {
             m_Grounded = false;
@@ -67,6 +81,10 @@ namespace UnityStandardAssets._2D
 
 			//this isn't great, but it does one-hit-kill
 			if (transform.position.y < -5) {
+				GetComponent<Inventory> ().Damage (100);
+			}
+			//checks left and right
+			if (Mathf.Abs (transform.position.x) > 13.5f) {
 				GetComponent<Inventory> ().Damage (100);
 			}
         }

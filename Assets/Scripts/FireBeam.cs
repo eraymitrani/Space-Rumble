@@ -64,10 +64,8 @@ public class FireBeam : MonoBehaviour
             aus.PlayOneShot(ac);
             yield return new WaitForSeconds(0.1f);
             lr.enabled = true;
-            Vector2 targetLoc = new Vector2(target.transform.position.x, target.transform.position.y);
-            Ray2D ray = new Ray2D(transform.position, Vector2.down);
-            RaycastHit2D hit;
-            hit = Physics2D.Raycast(ray.origin, Vector2.down, Mathf.Infinity, mask);
+           // Vector2 targetLoc = new Vector2(target.transform.position.x, target.transform.position.y);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, mask);
             if (hit)
             {
                 lr.SetPosition(1, hit.point);
