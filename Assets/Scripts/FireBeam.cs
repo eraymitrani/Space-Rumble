@@ -30,16 +30,15 @@ public class FireBeam : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    targetPool = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(targetPool.Length);
-	    try
-	    {
-	        target = targetPool[Random.Range(0, targetPool.Length)];
-	    }
-	    catch (IndexOutOfRangeException)
-	    {
+	    //targetPool = GameObject.FindGameObjectsWithTag("Player");
+	    //try
+	    //{
+	    //    target = targetPool[Random.Range(0, targetPool.Length)];
+	    //}
+	    //catch (IndexOutOfRangeException)
+	    //{
 	       
-	    }
+	    //}
 
     }
     IEnumerator FireLaser()
