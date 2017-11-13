@@ -12,8 +12,8 @@ public class WeaponController : MonoBehaviour
 	//public GameObject wind_square;
 
 	public float fuel = 100;
-	int consume_rate = 120;		//higher is faster
-	int recharge_rate = 25;		//lower is slower
+	int consume_rate = 100;		//higher is faster
+	int recharge_rate = 40;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
@@ -22,6 +22,9 @@ public class WeaponController : MonoBehaviour
 	public bool is_powered_up = false;
 	float powered_up_timer = 0;
 	float powered_up_time = 3;
+
+	float wait_time = 0.1f, wait_timer = 0f;
+	bool waiting = false;
 
 	//InputDevice controller;
 
@@ -57,6 +60,17 @@ public class WeaponController : MonoBehaviour
 
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
 
+		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasReleased || GetComponentInParent<ArmRotation> ().controller.RightTrigger.WasReleased) {
+			waiting = true;
+		}
+		if (waiting) {
+			wait_timer += Time.deltaTime;
+			if (wait_timer > wait_time) {
+				wait_timer = 0;
+				waiting = false;
+			}
+		}
+
 		if (GetComponentInParent<ArmRotation>().controller.LeftTrigger.WasPressed){
 			Debug.Log ("Burst");
 			Burst ();
@@ -71,7 +85,7 @@ public class WeaponController : MonoBehaviour
 
 			else if (fuel > 100) {
 				fuel = 100;
-			} else {
+			} else if (!waiting){
 				fuel += Time.deltaTime * recharge_rate;
 			}
 
@@ -168,13 +182,13 @@ public class WeaponController : MonoBehaviour
 		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
 
 		if (y > 0) {
-			rb.velocity = new Vector2 (rb.velocity.x, 3);
+			rb.velocity = new Vector2 (rb.velocity.x, 1);
 		} else {
 			//rb.velocity = new Vector2 (rb.velocity.x, -7);
 		}
 
 		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
-			rb.AddForce(angle * -100);
+			rb.AddForce(angle * -80);
 		}
 			
     }
@@ -203,11 +217,11 @@ public class WeaponController : MonoBehaviour
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 7000, dist.normalized.y * 700));
 					}
 
 					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 6000, dist.normalized.y * 600));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 7000, dist.normalized.y * 700));
 					}
 				}
 			}
