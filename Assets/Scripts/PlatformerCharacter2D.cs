@@ -43,12 +43,6 @@ namespace UnityStandardAssets._2D
         }
         void OnTriggerEnter2D(Collider2D other)
         {
-			Debug.Log ("collision!");
-			Debug.Log ("collision!");
-			Debug.Log ("collision!");
-			Debug.Log ("collision!");
-
-			Debug.Log (other);
             if (other.tag == "hazard")
             {
                 inv.Damage(1);
