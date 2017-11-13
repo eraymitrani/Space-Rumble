@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731319, g: 0.38074926, b: 0.35872564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -547,7 +547,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Press <sprite=0> to start after 2+ players join
+  m_text: 'Press <sprite=0> to start after 2+ players join
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -3220,10 +3222,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 02b8041c6ddcee3428810c7e7a438e0e, type: 3}
-    m_FontSize: 52
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 144
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -3231,7 +3233,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Blow the Targets to be Ready
+  m_Text: 'Hit the Targets to be Ready
+
+    Right Trigger to blow, Left Trigger to burst'
 --- !u!222 &795489051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3633,10 +3637,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 02b8041c6ddcee3428810c7e7a438e0e, type: 3}
-    m_FontSize: 52
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 144
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -3644,7 +3648,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Blow the Targets to be Ready
+  m_Text: 'Hit the Targets to be Ready
+
+    Right Trigger to blow, Left Trigger to burst'
 --- !u!222 &872672153
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5306,10 +5312,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 02b8041c6ddcee3428810c7e7a438e0e, type: 3}
-    m_FontSize: 52
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 144
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -5317,7 +5323,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Blow the Targets to be Ready
+  m_Text: 'Hit the Targets to be Ready
+
+    Right Trigger to blow, Left Trigger to burst'
 --- !u!222 &1322128502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6113,10 +6121,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 02b8041c6ddcee3428810c7e7a438e0e, type: 3}
-    m_FontSize: 52
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 4
     m_MaxSize: 144
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -6124,7 +6132,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Blow the Targets to be Ready
+  m_Text: 'Hit the Targets to be Ready
+
+    Right Trigger to blow, Left Trigger to burst'
 --- !u!222 &1382802311
 CanvasRenderer:
   m_ObjectHideFlags: 0

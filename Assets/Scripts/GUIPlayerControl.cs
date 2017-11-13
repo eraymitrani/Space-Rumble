@@ -34,6 +34,9 @@ public class GUIPlayerControl : MonoBehaviour {
         {
             Shoot();
         }
+		if (controller.LeftTrigger.WasPressed) {
+			Burst ();
+		}
 
         x = controller.RightStickX;
         y = controller.RightStickY;
@@ -60,4 +63,38 @@ public class GUIPlayerControl : MonoBehaviour {
             hitTarget = true;
         }
     }
+
+	void Burst(){
+		float ang;
+		ang = angle * Mathf.Deg2Rad;
+		ang += Random.Range(-0.3f, 0.3f);
+
+		if(Mathf.Abs(angle - 90) < 20)
+		{
+			hitTarget = true;
+		}
+
+
+		clones [0] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [1] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [2] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [3] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [4] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [5] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [6] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [7] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [8] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+		clones [9] = Instantiate (windSquare, fireLoc.position, Quaternion.identity);
+
+		float inc = -0.2f;
+
+		foreach (var clone in clones) {
+			ang = angle * Mathf.Deg2Rad;
+			ang += inc;
+			inc += 0.04f;
+
+			clone.GetComponent<Rigidbody2D> ().velocity = 100 * new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang));
+			clone.GetComponent<WindLifetime> ().is_alive = true;
+		}
+	}
 }
