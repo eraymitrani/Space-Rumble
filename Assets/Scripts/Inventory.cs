@@ -43,7 +43,7 @@ public class Inventory : MonoBehaviour
         m_Anim.SetInteger("currentHp", currentHP);
         if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
-	        InputManager.ActiveDevice.Vibrate(1f);
+	        //InputManager.ActiveDevice.Vibrate(1f);
             scoreManager.addScore(userControl.player_num, -1);
             m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
