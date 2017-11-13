@@ -12,8 +12,8 @@ public class WeaponController : MonoBehaviour
 	//public GameObject wind_square;
 
 	public float fuel = 100;
-	int consume_rate = 100;		//higher is faster
-	int recharge_rate = 40;		//lower is slower
+	int consume_rate = 90;		//higher is faster
+	int recharge_rate = 50;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
 	float powered_up_timer = 0;
 	float powered_up_time = 3;
 
-	float wait_time = 0.1f, wait_timer = 0f;
+	float wait_time = 0.2f, wait_timer = 0f;
 	bool waiting = false;
 
 	//InputDevice controller;
@@ -194,10 +194,10 @@ public class WeaponController : MonoBehaviour
     }
 
 	void Burst(){
-		if (fuel < 50) {
+		if (fuel < 33) {
 			return;
 		} else {
-			fuel -= 50;
+			fuel -= 33;
 			GetComponent<WindEmitter> ().BurstParticles ();
 		}
 
