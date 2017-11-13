@@ -2919,7 +2919,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1068956907}
   - component: {fileID: 1068956906}
-  - component: {fileID: 1068956905}
   - component: {fileID: 1068956908}
   m_Layer: 0
   m_Name: PowerupSpawner
@@ -2928,27 +2927,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1068956905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1068956904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1eb327ec30694d288e887ed164a9a0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  distanceZ: 0
-  distaneX: 16
-  distanceY: 0
-  startIn: 0
-  endIn: 60
-  t: {fileID: 0}
-  pos1: {x: 0, y: 0, z: 0}
-  pos2: {x: 0, y: 0, z: 0}
-  start: 0
 --- !u!114 &1068956906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,12 +2969,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad87915948156824a958a6fdae7d2165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.8
   distanceZ: 0
   distaneX: 16
   distanceY: 0
   startIn: 0
-  endIn: 0
+  endIn: 200
 --- !u!1 &1069514795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5872,7 +5850,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4758506342095288, guid: 4a7b80a30145549fda3bce408847e1c8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.33
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 4758506342095288, guid: 4a7b80a30145549fda3bce408847e1c8, type: 2}
       propertyPath: m_LocalPosition.z
