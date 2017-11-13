@@ -32,7 +32,7 @@ public class WindEmitter : MonoBehaviour {
 //			clone.GetComponent<SpriteRenderer> ().material = 
 //				GameObject.Find ("GameStateController").GetComponent<PlayerSpawner> ().Colors [
 //					GetComponentInParent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num - 1];
-//			}
+			}
 
 		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasPressed && GetComponentInParent<WeaponController> ().fuel >= 0) {
 			
