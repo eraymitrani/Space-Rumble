@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityStandardAssets._2D;
 
 public class PlayerSpawner : MonoBehaviour {
 
@@ -23,7 +24,7 @@ public class PlayerSpawner : MonoBehaviour {
         for (int i = 0; i < players; ++i)
         {
             GameObject player = Instantiate(Player, Spawns[i].transform);
-            UnityStandardAssets._2D.Platformer2DUserControl uc = player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>();
+            Platformer2DUserControl uc = player.GetComponent<Platformer2DUserControl>();
             uc.player_num = i + 1;
             uc.enabled = false;
             player.GetComponent<Inventory>().scoreManager = scoreManager;
@@ -62,7 +63,7 @@ public class PlayerSpawner : MonoBehaviour {
     public void respawnPlayer(int i)
     {
         GameObject player = Instantiate(Player, Spawns[i].transform);
-        player.GetComponent<UnityStandardAssets._2D.Platformer2DUserControl>().player_num = i + 1;
+        player.GetComponent<Platformer2DUserControl>().player_num = i + 1;
         player.GetComponent<Inventory>().scoreManager = scoreManager;
 
 		player.GetComponent<Inventory> ().isImmovable = true;
@@ -87,9 +88,9 @@ public class PlayerSpawner : MonoBehaviour {
         {
             if (spawn == null)
                 continue;
-            if (spawn.GetComponentInChildren<UnityStandardAssets._2D.Platformer2DUserControl>() == null)
+            if (spawn.GetComponentInChildren<Platformer2DUserControl>() == null)
                 continue;
-            spawn.GetComponentInChildren<UnityStandardAssets._2D.Platformer2DUserControl>().enabled = true;
+            spawn.GetComponentInChildren<Platformer2DUserControl>().enabled = true;
         }
     }
 }

@@ -17,9 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/eray_scene.unity
     guid: 3dc0b71fd07f6bb48bbe49bc63552c4f
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 367818f8217a4c844aa5d812f57452cf
   - enabled: 0
     path: Assets/Scenes/zach_scene.unity
     guid: 64ee634f35512664da739c09481a4835
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/773470ba6780448fc93156720f9cb178
+    path: 
     guid: 773470ba6780448fc93156720f9cb178

@@ -17,6 +17,7 @@ public class MainMenuControl : MonoBehaviour {
 
     void Start()
     {
+        TotalPlayerStocks.reset();
         buttonSpacing = PlayButton.transform.position.y - OptionButton.transform.position.y;
     }
 

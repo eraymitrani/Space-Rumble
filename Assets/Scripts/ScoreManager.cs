@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour {
     public TextMeshProUGUI winText;
     public float delayBeforeChange = 2f;
 
-	int num_scenes = 4;
+	int num_scenes = 5;
 
     int[] playerScores;
 
@@ -57,8 +57,22 @@ public class ScoreManager : MonoBehaviour {
         Array.Copy(playerScores, sortedScores, numPlayers);
         Array.Sort(sortedScores);
         Array.Reverse(sortedScores);
-        winText.text = "Player " + (Array.FindIndex(playerScores, a => a == sortedScores[0]) + 1).ToString() + " Won!";
+
+        int wonPlayer = Array.FindIndex(playerScores, a => a == sortedScores[0]) + 1;
+        switch (wonPlayer)
+        {
+            case 1: winText.color = PlayerControllers.Color1; break;
+            case 2: winText.color = PlayerControllers.Color2; break;
+            case 3: winText.color = PlayerControllers.Color3; break;
+            case 4: winText.color = PlayerControllers.Color4; break;
+        }
+        winText.text = "Player " + wonPlayer.ToString() + " Won!";
         StartCoroutine(delayReset());
+
+        for (int i = 0; i < numPlayers; i++)
+        {
+            TotalPlayerStocks.addStocks(i + 1, stocks + playerScores[i]);
+        }
     }
 
     IEnumerator delayReset()
