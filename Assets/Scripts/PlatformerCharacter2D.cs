@@ -47,8 +47,14 @@ namespace UnityStandardAssets._2D
 				inv.Damage (1);
 			} else if (other.tag == "powerup") {
 				//powerup stuff
-				GetComponentInChildren<WeaponController>().is_powered_up = true;
-				Destroy (other.gameObject);
+				if (other.name == "EnergyPowerup" || other.name == "EnergyPowerup(Clone)") {
+					GetComponentInChildren<WeaponController> ().is_powered_up = true;
+					Destroy (other.gameObject);
+				} else if (other.name == "ShieldPowerup" || other.name == "ShieldPowerup(Clone)") {
+					//do something here
+					GetComponent<Inventory>().is_powered_up = true;
+					Destroy (other.gameObject);
+				}
 			}
         }
 		void OnCollisionEnter2D(Collision2D other){
