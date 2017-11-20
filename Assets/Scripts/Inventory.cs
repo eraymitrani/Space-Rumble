@@ -47,6 +47,7 @@ public class Inventory : MonoBehaviour
             scoreManager.addScore(userControl.player_num, -1);
             m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
+	        GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
             StartCoroutine(killSelf());
 	    }
 
