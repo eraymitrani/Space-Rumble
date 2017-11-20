@@ -164,7 +164,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1847259185554364, guid: 55a3b9179374d4e33a60d2d042ffae46, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55a3b9179374d4e33a60d2d042ffae46, type: 2}
@@ -978,15 +978,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1572411302777498, guid: 9b49af3f29f5045fba489419a2451e03, type: 2}
-      propertyPath: m_TagString
-      value: space rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 50904543857289966, guid: 9b49af3f29f5045fba489419a2451e03,
-        type: 2}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b49af3f29f5045fba489419a2451e03, type: 2}
   m_IsPrefabParent: 0
@@ -1713,7 +1704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1462702195
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1965,6 +1956,10 @@ Prefab:
     - target: {fileID: 4032482491338488, guid: 0076c240bbe1d4bc0976107d87a86c88, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490326941589866, guid: 0076c240bbe1d4bc0976107d87a86c88, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0076c240bbe1d4bc0976107d87a86c88, type: 2}

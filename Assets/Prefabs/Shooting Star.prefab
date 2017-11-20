@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114936337583833766}
   - component: {fileID: 114625777717259142}
   - component: {fileID: 96024688455819772}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Shooting Star
   m_TagString: hazard
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

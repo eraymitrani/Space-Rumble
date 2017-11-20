@@ -19,7 +19,7 @@ public class SpawnShootingStars : MonoBehaviour {
 
 	IEnumerator SpawnLoop() {
         // change to "while !gameOver
-        yield return new WaitForSeconds(spawnWait);
+        ///yield return new WaitForSeconds(spawnWait);
 		while (true) {
 
 			float xcoord = Random.Range (leftBoundary, rightBoundary);
