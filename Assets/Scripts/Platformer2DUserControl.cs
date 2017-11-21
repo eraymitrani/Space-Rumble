@@ -60,6 +60,12 @@ namespace UnityStandardAssets._2D
 				} else if (controller.Action1.WasReleased) {
 					m_Jump = 2;
 				}
+
+				// pause the game
+				else if (InputManager.ActiveDevice.GetControl (InputControlType.Start)) {
+					togglePause ();
+				}
+
             }
         }
 
@@ -79,5 +85,9 @@ namespace UnityStandardAssets._2D
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = 0;
         }
+
+		private void togglePause() {
+
+		}
     }
 }
