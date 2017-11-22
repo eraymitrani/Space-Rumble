@@ -30,10 +30,10 @@ public class ControllerAssign : MonoBehaviour {
     {
         PlayerControllers.reset();
 
-        PlayerTutorial[0] = Player1.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
+        /*PlayerTutorial[0] = Player1.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
         PlayerTutorial[1] = Player2.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
         PlayerTutorial[2] = Player3.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
-        PlayerTutorial[3] = Player4.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
+        PlayerTutorial[3] = Player4.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;*/
     }
 
     void Update()
@@ -70,12 +70,12 @@ public class ControllerAssign : MonoBehaviour {
         {
             if (p[i] && pickedColor[i])
             {
-                if (PlayerTutorial[i].GetComponent<GUIPlayerControl>().hitTarget)
+                /*if (PlayerTutorial[i].GetComponent<GUIPlayerControl>().hitTarget)
                 {
                     PlayerTutorial[i].transform.parent.Find("Target").gameObject.SetActive(false);
                     PlayerTutorial[i].transform.parent.parent.Find("ReadyText").gameObject.SetActive(true);
                     pReady[i] = true;
-                }
+                }*/
             }
         }
 

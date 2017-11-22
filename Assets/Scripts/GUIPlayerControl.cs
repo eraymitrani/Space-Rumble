@@ -7,13 +7,14 @@ public class GUIPlayerControl : MonoBehaviour {
 
     float rotZ, x, y, old_rotZ;
 
-    public Vector2 angle_vec;
-    public float angle;
     public int playerNum;
+    public int targetAngle = 90;
     public bool hitTarget = false;
 
     InputDevice controller;
     Transform arm;
+    Vector2 angle_vec;
+    float angle;
     Transform fireLoc;
     Vector3 fireLocVec;
     GameObject windSquare;
@@ -34,8 +35,9 @@ public class GUIPlayerControl : MonoBehaviour {
         {
             Shoot();
         }
-		if (controller.LeftTrigger.WasPressed) {
-			Burst ();
+		if (controller.LeftTrigger.WasPressed)
+        {
+			Burst();
 		}
 
         x = controller.RightStickX;
@@ -58,7 +60,7 @@ public class GUIPlayerControl : MonoBehaviour {
         clone.GetComponent<Rigidbody2D>().velocity = 100 * new Vector2(Mathf.Cos(ang), Mathf.Sin(ang));
         clone.GetComponent<WindLifetime>().is_alive = true;
 
-        if(Mathf.Abs(angle - 90) < 20)
+        if(Mathf.Abs(angle - targetAngle) < 20)
         {
             hitTarget = true;
         }
@@ -69,7 +71,7 @@ public class GUIPlayerControl : MonoBehaviour {
 		ang = angle * Mathf.Deg2Rad;
 		ang += Random.Range(-0.3f, 0.3f);
 
-		if(Mathf.Abs(angle - 90) < 20)
+		if(Mathf.Abs(angle - targetAngle) < 20)
 		{
 			hitTarget = true;
 		}

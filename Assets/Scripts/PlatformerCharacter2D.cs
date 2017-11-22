@@ -22,6 +22,8 @@ namespace UnityStandardAssets._2D
         private Inventory inv;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+        public bool killOffscreen = true;
+
         private void Awake()
         {
             // Setting up references.
@@ -80,11 +82,11 @@ namespace UnityStandardAssets._2D
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
 			//this isn't great, but it does one-hit-kill
-			if (transform.position.y < -5) {
+			if (transform.position.y < -5 && killOffscreen) {
 				GetComponent<Inventory> ().Damage (100);
 			}
 			//checks left and right
-			if (Mathf.Abs (transform.position.x) > 13.5f) {
+			if (Mathf.Abs (transform.position.x) > 13.5f && killOffscreen) {
 				GetComponent<Inventory> ().Damage (100);
 			}
         }
