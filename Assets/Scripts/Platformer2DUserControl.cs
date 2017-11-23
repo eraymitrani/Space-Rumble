@@ -87,6 +87,16 @@ namespace UnityStandardAssets._2D
         }
 
 		private void togglePause() {
+			if(Time.timeScale == 0f){
+				Debug.Log ("Pausing!");
+				Time.timeScale = 1f;
+			}
+			else {
+				Debug.Log ("Unpausing!");
+				Time.timeScale = 0f;
+				//AudioSource.PlayClipAtPoint (pauseSound, Camera.main.gameObject.transform.position, 1f);
+			}
+			Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
 		}
     }
