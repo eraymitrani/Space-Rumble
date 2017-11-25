@@ -60,7 +60,7 @@ namespace UnityStandardAssets._2D
 			}
         }
 		void OnCollisionEnter2D(Collision2D other){
-			if (other.gameObject.tag == "hazard") {
+			if (other.gameObject.tag == "hazard" && other.collider is CapsuleCollider2D == false) {
 				inv.Damage (1);
 			}
 		}
