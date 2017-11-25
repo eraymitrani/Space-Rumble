@@ -329,7 +329,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Press <sprite=0> to start after 2+ players join
+  m_text: 'Press <sprite=0> to start
 
 '
   m_isRightToLeft: 0
