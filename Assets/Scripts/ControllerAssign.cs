@@ -7,10 +7,8 @@ using UnityEngine.UI;
 
 public class ControllerAssign : MonoBehaviour {
 
-    public GameObject Player1;
-    public GameObject Player2;
-    public GameObject Player3;
-    public GameObject Player4;
+    public GameObject[] Player = new GameObject[4];
+    public GameObject[] PlayerNonGUI = new GameObject[4];
     public GameObject TrackSelect;
     public float deadZone = 0.5f;
     public Color[] PlayerColors;
@@ -21,165 +19,130 @@ public class ControllerAssign : MonoBehaviour {
     bool[] p = new bool[4];
     bool[] pickedColor = new bool[4];
     bool[] pReady = new bool[4];
-    HashSet<InputDevice> usedControllers = new HashSet<InputDevice>();
     int[] pColorI = new int[] { -1, -1, -1, -1 };
     bool[] pMoved = new bool[4];
-    GameObject[] PlayerTutorial = new GameObject[4];
+    HashSet<InputDevice> usedControllers = new HashSet<InputDevice>();
 
     void Awake()
     {
         PlayerControllers.reset();
-
-        /*PlayerTutorial[0] = Player1.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
-        PlayerTutorial[1] = Player2.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
-        PlayerTutorial[2] = Player3.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;
-        PlayerTutorial[3] = Player4.transform.Find("Ready").Find("Panel").Find("PlayerPreview").gameObject;*/
     }
 
     void Update()
     {
-        if(p[0] && !pickedColor[0] && PlayerControllers.Player1.Action1.WasPressed)
+        for (int i = 0; i < 4; i++)
         {
-            pickedColor[0] = true;
-            Player1.transform.Find("Joined").gameObject.SetActive(false);
-            Player1.transform.Find("Ready").gameObject.SetActive(true);
-            return;
-        }
-        if (p[1] && !pickedColor[1] && PlayerControllers.Player2.Action1.WasPressed)
-        {
-            pickedColor[1] = true;
-            Player2.transform.Find("Joined").gameObject.SetActive(false);
-            Player2.transform.Find("Ready").gameObject.SetActive(true);
-            return;
-        }
-        if (p[2] && !pickedColor[2] && PlayerControllers.Player3.Action1.WasPressed)
-        {
-            pickedColor[2] = true;
-            Player3.transform.Find("Joined").gameObject.SetActive(false);
-            Player3.transform.Find("Ready").gameObject.SetActive(true);
-            return;
-        }
-        if (p[3] && !pickedColor[3] && PlayerControllers.Player4.Action1.WasPressed)
-        {
-            pickedColor[3] = true;
-            Player4.transform.Find("Joined").gameObject.SetActive(false);
-            Player4.transform.Find("Ready").gameObject.SetActive(true);
-            return;
-        }
-        for(int i = 0; i < 4; i++)
-        {
+            //Picked color, go to ready screen
+            if (p[i] && !pickedColor[i] && PlayerControllers.getPlayerController(i+1).Action1.WasPressed)
+            {
+                pickedColor[i] = true;
+                Player[i].transform.Find("Joined").gameObject.SetActive(false);
+                Player[i].transform.Find("Ready").gameObject.SetActive(true);
+                PlayerNonGUI[i].gameObject.SetActive(true);
+            }
+
+            //Did ready action
             if (p[i] && pickedColor[i])
             {
-                /*if (PlayerTutorial[i].GetComponent<GUIPlayerControl>().hitTarget)
+                if (PlayerNonGUI[i].GetComponentInChildren<PlayerReadyBox>().ready)
                 {
-                    PlayerTutorial[i].transform.parent.Find("Target").gameObject.SetActive(false);
-                    PlayerTutorial[i].transform.parent.parent.Find("ReadyText").gameObject.SetActive(true);
+                    Player[i].transform.Find("Ready").Find("ReadyText").gameObject.SetActive(true);
                     pReady[i] = true;
-                }*/
-            }
-        }
-
-        if (InputManager.ActiveDevice.Action1.WasPressed)
-        {
-            if (usedControllers.Contains(InputManager.ActiveDevice))
-                return;
-
-            if (!p[0])
-            {
-                PlayerControllers.Player1 = InputManager.ActiveDevice;
-                p[0] = true;
-                Player1.transform.Find("Join").gameObject.SetActive(false);
-                Player1.transform.Find("Joined").gameObject.SetActive(true);
-                int newColor = 0;
-                while (Array.Exists<int>(pColorI, i => i == newColor))
-                {
-                    newColor = (newColor + 1) % PlayerColors.Length;
                 }
-                pColorI[0] = newColor;
-                UpdateColor(pColorI[0], 1);
-            }
-            else if(!p[1])
-            {
-                PlayerControllers.Player2 = InputManager.ActiveDevice;
-                p[1] = true;
-                Player2.transform.Find("Join").gameObject.SetActive(false);
-                Player2.transform.Find("Joined").gameObject.SetActive(true);
-                int newColor = 0;
-                while (Array.Exists<int>(pColorI, i => i == newColor))
-                {
-                    newColor = (newColor + 1) % PlayerColors.Length;
-                }
-                pColorI[1] = newColor;
-                UpdateColor(pColorI[1], 2);
-            }
-            else if (!p[2])
-            {
-                PlayerControllers.Player3 = InputManager.ActiveDevice;
-                p[2] = true;
-                Player3.transform.Find("Join").gameObject.SetActive(false);
-                Player3.transform.Find("Joined").gameObject.SetActive(true);
-                int newColor = 0;
-                while (Array.Exists<int>(pColorI, i => i == newColor))
-                {
-                    newColor = (newColor + 1) % PlayerColors.Length;
-                }
-                pColorI[2] = newColor;
-                UpdateColor(pColorI[2], 3);
-            }
-            else if (!p[3])
-            {
-                PlayerControllers.Player4 = InputManager.ActiveDevice;
-                p[3] = true;
-                Player4.transform.Find("Join").gameObject.SetActive(false);
-                Player4.transform.Find("Joined").gameObject.SetActive(true);
-                int newColor = 0;
-                while (Array.Exists<int>(pColorI, i => i == newColor))
-                {
-                    newColor = (newColor + 1) % PlayerColors.Length;
-                }
-                pColorI[3] = newColor;
-                UpdateColor(pColorI[3], 4);
             }
 
-            usedControllers.Add(InputManager.ActiveDevice);
-        }
-
-        if (p[0] && !pickedColor[0])
-        {
-            PlayerColorCheck(PlayerControllers.Player1, ref pMoved[0], ref pColorI[0], 1);
-        }
-        if (p[1] && !pickedColor[1])
-        {
-            PlayerColorCheck(PlayerControllers.Player2, ref pMoved[1], ref pColorI[1], 2);
-        }
-        if (p[2] && !pickedColor[2])
-        {
-            PlayerColorCheck(PlayerControllers.Player3, ref pMoved[2], ref pColorI[2], 3);
-        }
-        if (p[3] && !pickedColor[3])
-        {
-            PlayerColorCheck(PlayerControllers.Player4, ref pMoved[3], ref pColorI[3], 4);
-        }
-
-        if (InputManager.ActiveDevice.GetControl(InputControlType.Start))
-        {
-            if (!allowSinglePlayer)
+            //Go to color picker
+            if (p[i] && !pickedColor[i])
             {
-                if (p[0] && !p[1])
-                    return;
+                PlayerColorCheck(PlayerControllers.getPlayerController(i+1), ref pMoved[i], ref pColorI[i], i + 1);
+            }
+        }
+
+        //Register new controller
+        if (InputManager.ActiveDevice.Action1.WasPressed && !usedControllers.Contains(InputManager.ActiveDevice))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (!p[i])
+                {
+                    switch (i)
+                    {
+                        case 0: PlayerControllers.Player1 = InputManager.ActiveDevice; break;
+                        case 1: PlayerControllers.Player2 = InputManager.ActiveDevice; break;
+                        case 2: PlayerControllers.Player3 = InputManager.ActiveDevice; break;
+                        case 3: PlayerControllers.Player4 = InputManager.ActiveDevice; break;
+                    }
+                    usedControllers.Add(InputManager.ActiveDevice);
+                    p[i] = true;
+                    Player[i].transform.Find("Join").gameObject.SetActive(false);
+                    Player[i].transform.Find("Joined").gameObject.SetActive(true);
+                    int newColor = 0;
+                    while (Array.Exists<int>(pColorI, n => n == newColor))
+                    {
+                        newColor = (newColor + 1) % PlayerColors.Length;
+                    }
+                    pColorI[i] = newColor;
+                    UpdateColor(pColorI[i], i + 1);
+                    break;
+                }
+            }
+        }
+
+        //Display press start?
+        if (!allowSinglePlayer)
+        {
+            transform.Find("Start").gameObject.SetActive(false);
+            bool allPlayers = true;
+            if (p[0] && p[1])
+            {
                 for (int i = 0; i < 4; i++)
                 {
                     if (p[i] && (!pickedColor[i] || !pReady[i]))
-                        return;
+                    {
+                        allPlayers = false;
+                        break;
+                    }
+                }
+                if(allPlayers)
+                {
+                    transform.Find("Start").gameObject.SetActive(true);
+                    if (InputManager.ActiveDevice.GetControl(InputControlType.Start))
+                    {
+                        if (skipSceneSelect)
+                        {
+                            SceneManager.LoadScene(1);
+                        }
+                        else
+                        {
+                            TrackSelect.SetActive(true);
+                            gameObject.SetActive(false);
+                        }
+                    }
                 }
             }
-            if (skipSceneSelect)
+        }
+        else
+        {
+            if (pReady[0])
             {
-                SceneManager.LoadScene(1);
-                return;
+                transform.Find("Start").gameObject.SetActive(true);
+                if (InputManager.ActiveDevice.GetControl(InputControlType.Start))
+                {
+                    if (skipSceneSelect)
+                    {
+                        SceneManager.LoadScene(1);
+                    }
+                    else
+                    {
+                        TrackSelect.SetActive(true);
+                        gameObject.SetActive(false);
+                    }
+                }
             }
-            TrackSelect.SetActive(true);
-            gameObject.SetActive(false);
+            else
+            {
+                transform.Find("Start").gameObject.SetActive(false);
+            }
         }
     }
 
