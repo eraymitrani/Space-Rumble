@@ -40,12 +40,18 @@ public class TrackSelection : MonoBehaviour {
         TrackList.GetComponent<RectTransform>().sizeDelta = new Vector2(0, totalTracks * 100);
         selectorTransform = TrackSelector.GetComponent<RectTransform>();
     }
-
+    IEnumerator LoadSceneWithFade(int toLoad)
+    {
+        float fadeTime = GameObject.Find("Fader").GetComponentInChildren<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(toLoad);
+        yield return null;
+    }
     void Update()
     {
         if (InputManager.ActiveDevice.Action1.WasPressed)
         {
-            SceneManager.LoadScene(index + 1);
+            StartCoroutine(LoadSceneWithFade(index + 1));
         }
 
         if (Mathf.Abs(InputManager.ActiveDevice.LeftStickY) < 0.01f)

@@ -80,13 +80,21 @@ public class ScoreManager : MonoBehaviour {
         yield return new WaitForSeconds(delayBeforeChange);
         //SceneManager.LoadScene("MainMenu");
 		int next_scene = SceneManager.GetActiveScene().buildIndex + 1;
-		if (next_scene < num_scenes) {
-			SceneManager.LoadScene (next_scene);
-		} else {
-			SceneManager.LoadScene ("MainMenu");
+		if (next_scene < num_scenes)
+		{
+		    StartCoroutine(LoadSceneWithFade(next_scene));
+		} else
+		{
+		    StartCoroutine(LoadSceneWithFade(0));
 		}
     }
-
+    IEnumerator LoadSceneWithFade(int toLoad)
+    {
+        float fadeTime = GameObject.Find("Fader").GetComponentInChildren<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(toLoad);
+        yield return null;
+    }
     IEnumerator RespawnPlayer(int i)
     {
         yield return new WaitForSeconds(2);

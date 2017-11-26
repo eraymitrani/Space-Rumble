@@ -16,7 +16,13 @@ public class VictoryScreenSpawner : MonoBehaviour
     {
         StartCoroutine(respawnPlayer());
     }
-
+    IEnumerator LoadSceneWithFade(int toLoad)
+    {
+        float fadeTime = GameObject.Find("Fader").GetComponentInChildren<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(toLoad);
+        yield return null;
+    }
     IEnumerator respawnPlayer()
     {
         yield return new WaitForSeconds(spawnDelay);
@@ -34,6 +40,6 @@ public class VictoryScreenSpawner : MonoBehaviour
         }
 
         yield return new WaitForSeconds(spawnDelay);
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadSceneWithFade(0));
     }
 }

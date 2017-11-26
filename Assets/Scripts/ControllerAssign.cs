@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InControl;
@@ -110,7 +111,7 @@ public class ControllerAssign : MonoBehaviour {
                     {
                         if (skipSceneSelect)
                         {
-                            SceneManager.LoadScene(1);
+                            StartCoroutine(LoadSceneWithFade(1));
                         }
                         else
                         {
@@ -130,7 +131,8 @@ public class ControllerAssign : MonoBehaviour {
                 {
                     if (skipSceneSelect)
                     {
-                        SceneManager.LoadScene(1);
+
+                        StartCoroutine(LoadSceneWithFade(1));
                     }
                     else
                     {
@@ -158,6 +160,13 @@ public class ControllerAssign : MonoBehaviour {
         }
     }
 
+    IEnumerator LoadSceneWithFade(int toLoad)
+    {
+        float fadeTime = GameObject.Find("Fader").GetComponentInChildren<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(toLoad);
+        yield return null;
+    }
     void PlayerColorCheck(InputDevice controller, ref bool pMoved, ref int pColorInd, int playerNum)
     {
         if (controller != null)

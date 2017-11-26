@@ -17,5 +17,7 @@ public class GameLoopManager : MonoBehaviour {
 		if (InputManager.ActiveDevice.GetControl(InputControlType.Start)) {
 			SceneManager.LoadScene ("MainMenu");
 		}
+
 	}
+
 }
