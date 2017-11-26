@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95805348687313456}
   - component: {fileID: 50796887573662454}
   - component: {fileID: 58717078466474592}
-  - component: {fileID: 114033446098679416}
+  - component: {fileID: 114801773078784818}
   m_Layer: 15
   m_Name: Black Hole
   m_TagString: hazard
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4179095523714462}
   - component: {fileID: 58415172581550014}
-  - component: {fileID: 114103482404699572}
+  - component: {fileID: 114693958005451028}
   m_Layer: 15
   m_Name: Black Hole Center
   m_TagString: Untagged
@@ -126,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273903408911238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.87, y: -0.43, z: 0}
+  m_LocalPosition: {x: 4.329693, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4179095523714462}
@@ -184,7 +184,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
 --- !u!95 &95805348687313456
 Animator:
   serializedVersion: 3
@@ -202,18 +202,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114033446098679416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273903408911238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114103482404699572
+--- !u!114 &114693958005451028
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -221,9 +210,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1476308331035286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d2f6b1f141acd40869152c024ad8518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shredTime: 6
+  shredForce: 0.95
+--- !u!114 &114801773078784818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273903408911238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2385caeda677348d89fdda28fb196244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravitySlowForce: 4
+  gravityZone: 0.25
 --- !u!212 &212037861715765890
 SpriteRenderer:
   m_ObjectHideFlags: 1
