@@ -63,7 +63,7 @@ namespace UnityStandardAssets._2D
 
 				// pause the game
 				else if (InputManager.ActiveDevice.GetControl (InputControlType.Start)) {
-					togglePause ();
+					//togglePause ();
 				}
 
             }

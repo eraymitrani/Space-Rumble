@@ -55,8 +55,9 @@ public class PlayerSpawner : MonoBehaviour {
                         break;
                 }
             }
-            stockBg.a = 0.5f;
+            //stockBg.a = 0.5f;
             StockPanels[i].GetComponent<Image>().color = stockBg;
+			//StockPanels[i].GetComponentsInChildren<Sprite> ().
         }
 	}
 
@@ -78,8 +79,31 @@ public class PlayerSpawner : MonoBehaviour {
     {
         TextMeshProUGUI stock = StockPanels[player].GetComponentInChildren<TextMeshProUGUI>();
         stock.text = "";
-        for (int i = 0; i < num; ++i)
-            stock.text += stockText;
+		for (int i = 0; i < num; ++i) {
+			stock.text += stockText;
+			stock.material = Colors [player];
+			//stock.tint = Color.black;
+		}
+
+		//stock.enabled = false;
+
+//		for (int i = 0; i < 50; ++i) {
+//			Debug.Log ("-----------");
+//		}
+//		Component[] go = StockPanels [player].GetComponentsInChildren<Component> ();
+//		foreach (Component g in go) {
+//			Debug.Log (g);
+//		}
+//		for (int i = 0; i < 50; ++i) {
+//			Debug.Log ("-----------");
+//		}
+//
+//		TMP_SubMeshUI icon = StockPanels [player].GetComponentInChildren<TMP_SubMeshUI> ();
+//		icon.spriteAsset.material = Colors [player];
+		//TMP_SpriteAsset icon = StockPanels [player].GetComponentInChildren<TMP_SpriteAsset> ();
+		//icon. = Color.black;
+		//icon.color = Colors [player].color;
+		//icon.color = Color.black;
     }
 
     public void enablePlayers()
