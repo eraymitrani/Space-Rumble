@@ -164,13 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxSpeed: 10
+  m_MaxSpeed: 7
   m_JumpForce: 800
   m_CrouchSpeed: 0.43
-  m_AirControl: 1
+  m_AirControl: 0
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967039
+  killOffscreen: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

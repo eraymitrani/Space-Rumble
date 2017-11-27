@@ -130,6 +130,10 @@ public class WeaponController : MonoBehaviour
 		angle = new Vector2(Mathf.Cos(GetComponentInParent<ArmRotation>().angle), Mathf.Sin(GetComponentInParent<ArmRotation>().angle));
 		angle = GetComponentInParent<ArmRotation> ().angle_vec;
 
+		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
+		rb.AddForce(angle * -35, ForceMode2D.Force);
+
+
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
 		Debug.DrawRay (fireLoc.position, 5 * angle);
 		Debug.Log ("fireloc is here");
@@ -164,11 +168,11 @@ public class WeaponController : MonoBehaviour
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
 					}
 
 					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 600, dist.normalized.y * 60));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
 						//Debug.Log (hit.collider.tag);
 					}
 				}
@@ -178,18 +182,18 @@ public class WeaponController : MonoBehaviour
 		//Debug.Log (angle.x.ToString() + " " + angle.y.ToString());
 		//transform.parent.parent.GetComponent<Rigidbody2D> ().AddForce(new Vector2(angle.x * 0.5 * -self_power, angle.y * -self_power));
 
-		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
-
-		if (y > 0) {
-			rb.velocity = new Vector2 (rb.velocity.x, 1);
-		} else {
-			//rb.velocity = new Vector2 (rb.velocity.x, -7);
-		}
-
-		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
-			rb.AddForce(angle * -80);
-		}
+//		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
+//		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
+//
+//		if (y > 0) {
+//			rb.velocity = new Vector2 (rb.velocity.x, 1);
+//		} else {
+//			//rb.velocity = new Vector2 (rb.velocity.x, -7);
+//		}
+//
+//		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
+////			rb.AddForce(angle * -80);
+//		}
 			
     }
 
@@ -204,6 +208,12 @@ public class WeaponController : MonoBehaviour
 
 		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
 		Vector2 angle = GetComponentInParent<ArmRotation> ().angle_vec;
+		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
+		rb.AddForce (angle * -700);
+
+
+
+
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
 		Debug.DrawRay (fireLoc.position, 5 * angle);
@@ -214,35 +224,40 @@ public class WeaponController : MonoBehaviour
 			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
 
 			if (hit.rigidbody != null && dist.magnitude > 0) {
-				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
+				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject 
+					&& hit.collider.gameObject != transform.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 7000, dist.normalized.y * 700));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
 					}
 
 					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 7000, dist.normalized.y * 700));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
 					}
 				}
 			}
 		}
 
-		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
-
-		if (y > 0) {
-			rb.velocity = new Vector2 (rb.velocity.x, 3);
-		} else {
-			//rb.velocity = new Vector2 (rb.velocity.x, -7);
-		}
+//		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
+//		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
+//
+//		if (y > 0) {
+//			//rb.velocity = new Vector2 (rb.velocity.x, 3);
+//		} else {
+//			//rb.velocity = new Vector2 (rb.velocity.x, -7);
+//		}
 
 //		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
 //			rb.AddForce(angle * -1000);
 //		}
 
-		if (angle.y < -0.5) {
-			Debug.Log (angle.y);
-			rb.AddForce (angle * -1000);
-		}
+		//if (angle.y < -0.5) {
+//		Debug.Log (angle);
+//		rb.AddForce (angle * -1000);
+//			Debug.DrawRay (rb.gameObject.transform.position, new Vector3 (angle.x, angle.y, 0));
+		//}
+
+
+
 	}
 }

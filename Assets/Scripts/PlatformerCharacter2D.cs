@@ -5,7 +5,7 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
-        [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
+        [SerializeField] private float m_MaxSpeed = 4f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
@@ -94,7 +94,8 @@ namespace UnityStandardAssets._2D
 
         public void Move(float move, bool crouch, int jump)
         {
-           
+
+
 
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
@@ -109,7 +110,9 @@ namespace UnityStandardAssets._2D
 
                 // Move the character
 				//if (!PlayerControllers.getPlayerController (GetComponent<Platformer2DUserControl> ().player_num).RightTrigger.IsPressed) {
+				if (move != 0) {
 					m_Rigidbody2D.velocity = new Vector2 (move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
+				} 
 				//} 
 
 
