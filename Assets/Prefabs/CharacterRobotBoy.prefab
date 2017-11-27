@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MaxSpeed: 7
   m_JumpForce: 800
   m_CrouchSpeed: 0.43
-  m_AirControl: 0
+  m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967039
@@ -708,6 +708,7 @@ MonoBehaviour:
   maxHP: 5
   isStun: 0
   isImmovable: 0
+  rumbleTime: 0.5
   scoreManager: {fileID: 0}
   is_powered_up: 0
 --- !u!114 &114746831957901338

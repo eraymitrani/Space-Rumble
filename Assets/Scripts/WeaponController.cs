@@ -168,11 +168,11 @@ public class WeaponController : MonoBehaviour
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
 					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
 					}
 
 					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 500, dist.normalized.y * 50));
+						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
 						//Debug.Log (hit.collider.tag);
 					}
 				}
