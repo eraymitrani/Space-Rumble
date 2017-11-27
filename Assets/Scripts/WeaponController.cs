@@ -13,7 +13,7 @@ public class WeaponController : MonoBehaviour
 
 	public float fuel = 100;
 	int consume_rate = 90;		//higher is faster
-	int recharge_rate = 50;		//lower is slower
+	int recharge_rate = 60;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
@@ -131,7 +131,7 @@ public class WeaponController : MonoBehaviour
 		angle = GetComponentInParent<ArmRotation> ().angle_vec;
 
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		rb.AddForce(angle * -35, ForceMode2D.Force);
+		rb.AddForce(angle * -45, ForceMode2D.Force);
 
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
@@ -209,7 +209,7 @@ public class WeaponController : MonoBehaviour
 		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
 		Vector2 angle = GetComponentInParent<ArmRotation> ().angle_vec;
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		rb.AddForce (angle * -700);
+		rb.AddForce (angle * -800);
 
 
 

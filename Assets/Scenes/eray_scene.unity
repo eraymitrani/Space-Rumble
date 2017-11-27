@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642974, b: 0.574825, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1451,7 +1451,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 613522850}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 79a2af4f75f27430d98fe69b14fd2dcd, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2035,8 +2035,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 710414565}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.31, y: -5.43, z: 0}
-  m_LocalScale: {x: 1.2, y: 1, z: 1}
+  m_LocalPosition: {x: -21.31, y: -4.71, z: 0}
+  m_LocalScale: {x: 1.2, y: 0.47, z: 1}
   m_Children: []
   m_Father: {fileID: 1261552611}
   m_RootOrder: 0
@@ -2049,7 +2049,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 710414565}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2819,7 +2819,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 997883791}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 79a2af4f75f27430d98fe69b14fd2dcd, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3493,8 +3493,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1295422891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.19, y: -5.43, z: 0}
-  m_LocalScale: {x: 1.1999999, y: 1, z: 1}
+  m_LocalPosition: {x: 21.19, y: -4.71, z: 0}
+  m_LocalScale: {x: 1.1999999, y: 0.47, z: 1}
   m_Children: []
   m_Father: {fileID: 1261552611}
   m_RootOrder: 2
@@ -3507,7 +3507,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1295422891}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3747,7 +3747,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362089122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 0.85, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4432,7 +4432,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1650854447}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 79a2af4f75f27430d98fe69b14fd2dcd, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5264,7 +5264,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1888523601}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 79a2af4f75f27430d98fe69b14fd2dcd, type: 2}
+  m_Material: {fileID: 6200000, guid: 9fb6d75de8c794433b6481bd1c819f65, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
