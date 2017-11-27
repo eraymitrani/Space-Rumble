@@ -42,6 +42,15 @@ public class ControllerAssign : MonoBehaviour {
                 PlayerNonGUI[i].gameObject.SetActive(true);
             }
 
+            //See if they want to change color
+            if(p[i] && pickedColor[i] && !pReady[i] && PlayerControllers.getPlayerController(i + 1).Action2.WasPressed)
+            {
+                pickedColor[i] = false;
+                Player[i].transform.Find("Joined").gameObject.SetActive(true);
+                Player[i].transform.Find("Ready").gameObject.SetActive(false);
+                PlayerNonGUI[i].gameObject.SetActive(false);
+            }
+
             //Did ready action
             if (p[i] && pickedColor[i])
             {
