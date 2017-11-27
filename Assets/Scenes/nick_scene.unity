@@ -1285,6 +1285,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1875737161177514, guid: 4a7b80a30145549fda3bce408847e1c8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a7b80a30145549fda3bce408847e1c8, type: 2}
   m_IsPrefabParent: 0
@@ -1765,6 +1769,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1136606695277396, guid: aac5f3499822b4ab4910c5c2c748ea71, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aac5f3499822b4ab4910c5c2c748ea71, type: 2}
   m_IsPrefabParent: 0
@@ -1788,7 +1796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!58 &1462702195
 CircleCollider2D:
   m_ObjectHideFlags: 0
