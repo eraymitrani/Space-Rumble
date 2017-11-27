@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityStandardAssets._2D;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class VictoryScreenSpawner : MonoBehaviour
 {
@@ -11,10 +13,20 @@ public class VictoryScreenSpawner : MonoBehaviour
     public GameObject[] Spawns = new GameObject[4];
     public Material[] Colors = new Material[4];
     public float spawnDelay = 3;
-
+    public TextMeshProUGUI winText;
+    private int winner, winnerStock = 0;
     void Start()
     {
         StartCoroutine(respawnPlayer());
+        //for (int i = 1; i < 5; i++)
+        //{
+        //    if (TotalPlayerStocks.getPlayerStocks(i) > winnerStock)
+        //    {
+        //        winner = i;
+        //        winnerStock = TotalPlayerStocks.getPlayerStocks(i);
+        //    }
+        //}
+        //winText.text = "Player " + winner.ToString() + " won with " + winnerStock.ToString() + " stocks";
     }
     IEnumerator LoadSceneWithFade(int toLoad)
     {
@@ -25,7 +37,7 @@ public class VictoryScreenSpawner : MonoBehaviour
     }
     IEnumerator respawnPlayer()
     {
-        yield return new WaitForSeconds(spawnDelay);
+        //yield return new WaitForSeconds(spawnDelay);
         int players = PlayerControllers.numOfPlayers();
         for (int i = 0; i < players; ++i)
         {
@@ -38,7 +50,7 @@ public class VictoryScreenSpawner : MonoBehaviour
                 sr.material = Colors[i];
             }
         }
-
+        winText.enabled = true;
         yield return new WaitForSeconds(spawnDelay);
         StartCoroutine(LoadSceneWithFade(0));
     }
