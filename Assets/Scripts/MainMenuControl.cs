@@ -7,6 +7,7 @@ public class MainMenuControl : MonoBehaviour {
 
     public GameObject selector;
     public GameObject playerPanel;
+    public GameObject creditPanel;
 
     public GameObject PlayButton;
     public GameObject OptionButton;
@@ -39,6 +40,10 @@ public class MainMenuControl : MonoBehaviour {
                 case 1:
                     break;
                 case 2:
+                    creditPanel.SetActive(true);
+                    gameObject.SetActive(false);
+                    break;
+                case 3:
                     Application.Quit();
                     break;
             }
@@ -51,7 +56,7 @@ public class MainMenuControl : MonoBehaviour {
         {
             if(InputManager.ActiveDevice.LeftStickY < 0)
             {
-                if(index != 2)
+                if(index != 3)
                 {
                     index += 1;
                     selector.transform.position = selector.transform.position + new Vector3(0, -buttonSpacing, 0);
