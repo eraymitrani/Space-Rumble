@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public int maxHP = 1;
     public bool isStun;
 	public bool isImmovable = false;
+    public float rumbleTime = 0.5f;
     private float stunInterval = 0.5f;
     private SpriteRenderer sr;
     public ScoreManager scoreManager;
@@ -43,13 +44,14 @@ public class Inventory : MonoBehaviour
         m_Anim.SetInteger("currentHp", currentHP);
         if (currentHP <= 0 && !m_Anim.GetBool("Dead"))
 	    {
-	        //InputManager.ActiveDevice.Vibrate(1f);
+	        userControl.controller.Vibrate(1f);
             scoreManager.addScore(userControl.player_num, -1);
             m_Anim.SetBool("Dead", true);
             userControl.enabled = false;
 	        GetComponentInParent<Rigidbody2D>().velocity = Vector2.zero;
             StartCoroutine(killSelf());
-	    }
+            StartCoroutine(stopRumble());
+        }
 
 		if (is_powered_up) {
 			powered_up_timer += Time.deltaTime;
@@ -107,5 +109,11 @@ public class Inventory : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
+    }
+
+    IEnumerator stopRumble()
+    {
+        yield return new WaitForSeconds(rumbleTime);
+        userControl.controller.Vibrate(0);
     }
 }

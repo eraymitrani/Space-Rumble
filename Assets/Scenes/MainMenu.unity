@@ -3952,7 +3952,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 032ad77de76ccf349b265e042395758c, type: 2}
   - {fileID: 2100000, guid: 52b7830492d226e459bb0a630c16ea2e, type: 2}
   - {fileID: 2100000, guid: 982a2b7ce2361864289266f88ce35850, type: 2}
-  allowSinglePlayer: 0
+  allowSinglePlayer: 1
   skipSceneSelect: 1
 --- !u!1 &769948323
 GameObject:
@@ -14560,7 +14560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.591}
+  m_Color: {r: 0.7205882, g: 0.7205882, b: 0.7205882, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
