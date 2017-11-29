@@ -12,7 +12,7 @@ public class VictoryScreenSpawner : MonoBehaviour
     public GameObject Player;
     public GameObject[] Spawns = new GameObject[4];
     public Material[] Colors = new Material[4];
-    public float spawnDelay = 3;
+    public float spawnDelay = 10f;
     public TextMeshProUGUI winText;
     private int winner, winnerStock = 0;
     void Start()

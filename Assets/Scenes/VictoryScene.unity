@@ -1118,7 +1118,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 032ad77de76ccf349b265e042395758c, type: 2}
   - {fileID: 2100000, guid: 52b7830492d226e459bb0a630c16ea2e, type: 2}
   - {fileID: 2100000, guid: 982a2b7ce2361864289266f88ce35850, type: 2}
-  spawnDelay: 3
+  spawnDelay: 10
   winText: {fileID: 596398226}
 --- !u!4 &1023890304
 Transform:
