@@ -48,13 +48,9 @@ namespace UnityStandardAssets._2D
         void OnTriggerEnter2D(Collider2D other)
         {
 			if (other.tag == "hazard" || other.tag == "spike") {
-				inv.Damage (1);
+			    Instantiate(a, transform.position, Quaternion.identity);
+                inv.Damage (1);
 
-			    if (other.gameObject.tag == "spike")
-			    {
-			        Instantiate(a, transform.position, Quaternion.identity);
-
-			    }
             } else if (other.tag == "powerup") {
 				//powerup stuff
 				if (other.name == "EnergyPowerup" || other.name == "EnergyPowerup(Clone)") {
@@ -67,8 +63,10 @@ namespace UnityStandardAssets._2D
 				}
 			}
         }
-        void OnCollisionEnter2D(Collision2D other){
-			if (other.gameObject.tag == "hazard" || other.gameObject.tag == "spike" && other.collider is CapsuleCollider2D == false) {
+        void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.collider is CapsuleCollider2D) return;
+			if (other.gameObject.tag == "hazard" || other.gameObject.tag == "spike" ) {
 				inv.Damage (1);
 			    Instantiate(a, transform.position, Quaternion.identity);
 
