@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95748532776491514}
   - component: {fileID: 120854216438912744}
   - component: {fileID: 114574747840583502}
+  - component: {fileID: 70973864438706166}
   m_Layer: 9
   m_Name: AlienSpaceship_0
   m_TagString: hazard
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988279450313794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 8.45, z: 0}
+  m_LocalPosition: {x: -10.352321, y: 6.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +57,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.20852852}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -67,8 +68,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4375, y: 1}
+  m_Size: {x: 1.4375, y: 0.58294296}
   m_EdgeRadius: 0
+--- !u!70 &70973864438706166
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988279450313794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000006314152, y: 0.2966942}
+  m_Size: {x: 0.8980595, y: 0.4066127}
+  m_Direction: 1
 --- !u!95 &95748532776491514
 Animator:
   serializedVersion: 3
