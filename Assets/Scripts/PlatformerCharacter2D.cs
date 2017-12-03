@@ -5,6 +5,8 @@ namespace UnityStandardAssets._2D
 {
     public class PlatformerCharacter2D : MonoBehaviour
     {
+        public GameObject a;
+
         [SerializeField] private float m_MaxSpeed = 4f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
@@ -45,9 +47,15 @@ namespace UnityStandardAssets._2D
         }
         void OnTriggerEnter2D(Collider2D other)
         {
-			if (other.tag == "hazard") {
+			if (other.tag == "hazard" || other.tag == "spike") {
 				inv.Damage (1);
-			} else if (other.tag == "powerup") {
+
+			    if (other.gameObject.tag == "spike")
+			    {
+			        Instantiate(a, transform.position, Quaternion.identity);
+
+			    }
+            } else if (other.tag == "powerup") {
 				//powerup stuff
 				if (other.name == "EnergyPowerup" || other.name == "EnergyPowerup(Clone)") {
 					GetComponentInChildren<WeaponController> ().is_powered_up = true;
@@ -59,10 +67,17 @@ namespace UnityStandardAssets._2D
 				}
 			}
         }
-		void OnCollisionEnter2D(Collision2D other){
-			if (other.gameObject.tag == "hazard" && other.collider is CapsuleCollider2D == false) {
+        void OnCollisionEnter2D(Collision2D other){
+			if (other.gameObject.tag == "hazard" || other.gameObject.tag == "spike" && other.collider is CapsuleCollider2D == false) {
 				inv.Damage (1);
-			}
+			    Instantiate(a, transform.position, Quaternion.identity);
+
+                if (other.gameObject.tag == "spike")
+			    {
+			        Instantiate(a, transform.position, Quaternion.identity);
+
+                }
+            }
 		}
         private void FixedUpdate()
         {

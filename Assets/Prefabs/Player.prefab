@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 61345395792713388}
   - component: {fileID: 114359565110824314}
   - component: {fileID: 95960238905008110}
+  - component: {fileID: 114246912596593460}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -387,6 +388,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "5\u2665"
+--- !u!114 &114246912596593460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1731479578055882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c3e2948bfbfc441a4d08ac2273de03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: {fileID: 1416720804256930, guid: c67f68e7c85a32244a2e4943495fd4c6, type: 2}
 --- !u!114 &114248741911449660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: {fileID: 1416720804256930, guid: c67f68e7c85a32244a2e4943495fd4c6, type: 2}
   m_MaxSpeed: 10
   m_JumpForce: 800
   m_CrouchSpeed: 0.25
@@ -432,6 +446,7 @@ MonoBehaviour:
   maxHP: 1
   isStun: 0
   isImmovable: 0
+  rumbleTime: 0.5
   scoreManager: {fileID: 0}
   is_powered_up: 0
 --- !u!114 &114397894354776916

@@ -56,7 +56,7 @@ public class movement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "hazard")
+        if (other.tag == "hazard" || other.tag == "spike")
         {
             inv.Damage(1);
         }

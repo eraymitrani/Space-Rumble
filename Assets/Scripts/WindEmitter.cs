@@ -43,7 +43,7 @@ public class WindEmitter : MonoBehaviour {
 	}
 
 	public void BurstParticles(){
-		Debug.Log (GetComponentInParent<WeaponController> ().fuel);
+		//Debug.Log (GetComponentInParent<WeaponController> ().fuel);
 		clones [0] = Instantiate (wind_square, transform.position, Quaternion.identity);
 		clones [1] = Instantiate (wind_square, transform.position, Quaternion.identity);
 		clones [2] = Instantiate (wind_square, transform.position, Quaternion.identity);
