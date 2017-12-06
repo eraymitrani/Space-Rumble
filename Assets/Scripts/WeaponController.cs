@@ -131,39 +131,23 @@ public class WeaponController : MonoBehaviour
 		angle = GetComponentInParent<ArmRotation> ().angle_vec;
 
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		rb.AddForce(angle * -45, ForceMode2D.Force);
+
+		//aiming up while on the ground
+		if (angle.y > 0 && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
+			//don't knock back
+		} else { //not grounded, aiming down
+			//do knock back
+			rb.AddForce(angle * -45, ForceMode2D.Force);
+		}
 
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
 		Debug.DrawRay (fireLoc.position, 5 * angle);
-		//Debug.Log ("fireloc is here");
-		//Debug.Log (fireLoc.position);
 
         foreach (var hit in hits)
         {
-			//if (hit.collider.gameObject.tag == "wall") {
 			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
-			//	Debug.Log (hit.distance);
-			//}
-
-            //            Debug.Log(hit.collider.tag);
-            //            Debug.Log(hit.distance);
-            if (hit.rigidbody != null && dist.magnitude > 0)
-            {
-				//Debug.Log("hit point is " + (hit.point.x));
-				//Debug.Log("fire loc is " + (fireLoc.position.x));
-//                if (hit.point.x < fireLoc.position.x )
-//                {
-//
-//                    hit.collider.attachedRigidbody.AddForce(angle * (power / dist.magnitude));
-//
-//                }
-//                else
-//                {
-//                    hit.collider.attachedRigidbody.AddForce(-1*angle * (power / dist.magnitude));
-//
-//                }
-
+            if (hit.rigidbody != null && dist.magnitude > 0) {
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
 					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
@@ -178,22 +162,6 @@ public class WeaponController : MonoBehaviour
 				}
             }
         }
-
-		//Debug.Log (angle.x.ToString() + " " + angle.y.ToString());
-		//transform.parent.parent.GetComponent<Rigidbody2D> ().AddForce(new Vector2(angle.x * 0.5 * -self_power, angle.y * -self_power));
-
-//		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-//		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
-//
-//		if (y > 0) {
-//			rb.velocity = new Vector2 (rb.velocity.x, 1);
-//		} else {
-//			//rb.velocity = new Vector2 (rb.velocity.x, -7);
-//		}
-//
-//		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
-////			rb.AddForce(angle * -80);
-//		}
 			
     }
 
@@ -209,8 +177,14 @@ public class WeaponController : MonoBehaviour
 		//startpos, radius, direction (change this to be direction of leafblower/right stick), max_distance
 		Vector2 angle = GetComponentInParent<ArmRotation> ().angle_vec;
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-		rb.AddForce (angle * -800);
-
+			
+		//aiming up while on the ground
+		if (angle.y > 0 && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
+			//don't knock back
+		} else { //not grounded, aiming down
+			//do knock back
+			rb.AddForce (angle * -800);
+		}
 
 
 
@@ -237,27 +211,6 @@ public class WeaponController : MonoBehaviour
 				}
 			}
 		}
-
-//		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
-//		y = angle.y * -5 * GetComponentInParent<ArmRotation> ().controller.RightTrigger.Value;
-//
-//		if (y > 0) {
-//			//rb.velocity = new Vector2 (rb.velocity.x, 3);
-//		} else {
-//			//rb.velocity = new Vector2 (rb.velocity.x, -7);
-//		}
-
-//		if (Mathf.Abs(rb.velocity.y) >= 1f) { //in air
-//			rb.AddForce(angle * -1000);
-//		}
-
-		//if (angle.y < -0.5) {
-//		Debug.Log (angle);
-//		rb.AddForce (angle * -1000);
-//			Debug.DrawRay (rb.gameObject.transform.position, new Vector3 (angle.x, angle.y, 0));
-		//}
-
-
 
 	}
 }

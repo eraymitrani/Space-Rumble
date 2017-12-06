@@ -8,6 +8,7 @@ namespace UnityStandardAssets._2D
         public GameObject a;
 
         [SerializeField] private float m_MaxSpeed = 4f;                    // The fastest the player can travel in the x axis.
+		[SerializeField] private float clamp_speed = 12f;
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
         [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
@@ -40,6 +41,10 @@ namespace UnityStandardAssets._2D
             }
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
         }
+
+		public bool is_grounded(){
+			return m_Grounded;
+		}
 
         public bool dir()
         {
@@ -101,6 +106,10 @@ namespace UnityStandardAssets._2D
 			//checks left and right
 			if (Mathf.Abs (transform.position.x) > 13.5f && killOffscreen) {
 				GetComponent<Inventory> ().Damage (100);
+			}
+
+			if(m_Rigidbody2D.velocity.magnitude > clamp_speed){
+				m_Rigidbody2D.velocity = Vector3.ClampMagnitude(m_Rigidbody2D.velocity, clamp_speed);
 			}
         }
 

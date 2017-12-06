@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 1416720804256930, guid: c67f68e7c85a32244a2e4943495fd4c6, type: 2}
   m_MaxSpeed: 7
+  clamp_speed: 12
   m_JumpForce: 800
   m_CrouchSpeed: 0.36
   m_AirControl: 0
