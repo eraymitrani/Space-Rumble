@@ -1,4 +1,3 @@
 # 494_P3
-Only share assets and project settings folder
 
-Everyone work on features in their own scene
+Space Rumble is a local multiplayer gladiator combat in space. Armed with a gas gun that can also double as a jetpack, you must out-maneuver your enemies in the deadly craters of Mars.
