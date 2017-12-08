@@ -13,7 +13,7 @@ public class WeaponController : MonoBehaviour
 
 	public float fuel = 100;
 	int consume_rate = 90;		//higher is faster
-	int recharge_rate = 60;		//lower is slower
+	int recharge_rate = 70;		//lower is slower
 
 	Rigidbody2D rb;
 	float x, y;
@@ -25,6 +25,8 @@ public class WeaponController : MonoBehaviour
 
 	float wait_time = 0.2f, wait_timer = 0f;
 	bool waiting = false;
+
+	bool do_burst = false, do_shoot = false;
 
 	//InputDevice controller;
 
@@ -73,10 +75,12 @@ public class WeaponController : MonoBehaviour
 
 		if (GetComponentInParent<ArmRotation>().controller.LeftTrigger.WasPressed){
 			//Debug.Log ("Burst");
-			Burst ();
+			do_burst = true;
+			//Burst ();
 		} else if (GetComponentInParent<ArmRotation>().controller.RightTrigger.IsPressed){
             //Debug.Log("Shoot");
-	        Shoot();
+			do_shoot = true;
+	        //Shoot();
 		} else {
 			//refuel
 			if (is_powered_up) {
@@ -102,8 +106,19 @@ public class WeaponController : MonoBehaviour
 		}
 	}
 
+	void FixedUpdate(){
+		if (do_burst) {
+			Burst ();
+			do_burst = false;
+		} else if (do_shoot) {
+			Shoot ();
+			do_shoot = false;
+		}
+	}
+
     void Shoot()
     {
+		do_shoot = false;
 		if (!is_powered_up) {
 			fuel -= Time.deltaTime * consume_rate;
 		} else {
@@ -133,7 +148,7 @@ public class WeaponController : MonoBehaviour
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
 
 		//aiming up while on the ground
-		if (angle.y > 0 && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
+		if (angle.y > -0.4f && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
 			//don't knock back
 		} else { //not grounded, aiming down
 			//do knock back
@@ -166,6 +181,7 @@ public class WeaponController : MonoBehaviour
     }
 
 	void Burst(){
+		do_burst = false;
 		if (fuel < 33) {
 			return;
 		} else {
@@ -179,7 +195,7 @@ public class WeaponController : MonoBehaviour
 		rb = transform.parent.parent.GetComponent<Rigidbody2D> ();
 			
 		//aiming up while on the ground
-		if (angle.y > 0 && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
+		if (angle.y > -0.4f && transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded ()) {
 			//don't knock back
 		} else { //not grounded, aiming down
 			//do knock back
