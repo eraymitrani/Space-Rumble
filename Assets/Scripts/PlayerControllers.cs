@@ -5,6 +5,7 @@ public static class PlayerControllers {
 
     private static InputDevice player1 = null, player2 = null, player3 = null, player4 = null;
     private static Color player1Color, player2Color, player3Color, player4Color;
+    private static string player1ColorName, player2ColorName, player3ColorName, player4ColorName;
 
     public static void reset()
     {
@@ -132,6 +133,54 @@ public static class PlayerControllers {
         set
         {
             player4Color = value;
+        }
+    }
+
+    public static string Color1Name
+    {
+        get
+        {
+            return player1ColorName;
+        }
+        set
+        {
+            player1ColorName = value;
+        }
+    }
+
+    public static string Color2Name
+    {
+        get
+        {
+            return player2ColorName;
+        }
+        set
+        {
+            player2ColorName = value;
+        }
+    }
+
+    public static string Color3Name
+    {
+        get
+        {
+            return player3ColorName;
+        }
+        set
+        {
+            player3ColorName = value;
+        }
+    }
+
+    public static string Color4Name
+    {
+        get
+        {
+            return player4ColorName;
+        }
+        set
+        {
+            player4ColorName = value;
         }
     }
 }

@@ -13,6 +13,7 @@ public class ControllerAssign : MonoBehaviour {
     public GameObject TrackSelect;
     public float deadZone = 0.5f;
     public Color[] PlayerColors;
+    public String[] ColorNames;
     public Material[] PlayerMaterials = new Material[4];
     public bool allowSinglePlayer = false;
     public bool skipSceneSelect = true;
@@ -162,10 +163,10 @@ public class ControllerAssign : MonoBehaviour {
         PlayerMaterials[playerNum - 1].color = PlayerColors[index];
         switch (playerNum)
         {
-            case 1: PlayerControllers.Color1 = PlayerColors[index]; break;
-            case 2: PlayerControllers.Color2 = PlayerColors[index]; break;
-            case 3: PlayerControllers.Color3 = PlayerColors[index]; break;
-            case 4: PlayerControllers.Color4 = PlayerColors[index]; break;
+            case 1: PlayerControllers.Color1 = PlayerColors[index]; PlayerControllers.Color1Name = ColorNames[index]; break;
+            case 2: PlayerControllers.Color2 = PlayerColors[index]; PlayerControllers.Color2Name = ColorNames[index]; break;
+            case 3: PlayerControllers.Color3 = PlayerColors[index]; PlayerControllers.Color3Name = ColorNames[index]; break;
+            case 4: PlayerControllers.Color4 = PlayerColors[index]; PlayerControllers.Color4Name = ColorNames[index]; break;
         }
     }
 
@@ -193,7 +194,7 @@ public class ControllerAssign : MonoBehaviour {
             }
             else if (controller.LeftStickX < -deadZone && !pMoved)
             {
-                int newColor = (pColorInd - 1) % PlayerColors.Length;
+                int newColor = (pColorInd - 1 + PlayerColors.Length) % PlayerColors.Length;
                 while (Array.Exists<int>(pColorI, i => i == newColor))
                 {
                     newColor = (newColor - 1 + PlayerColors.Length) % PlayerColors.Length;

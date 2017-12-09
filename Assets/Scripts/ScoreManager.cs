@@ -59,14 +59,15 @@ public class ScoreManager : MonoBehaviour {
         Array.Reverse(sortedScores);
 
         int wonPlayer = Array.FindIndex(playerScores, a => a == sortedScores[0]) + 1;
+        string color = "";
         switch (wonPlayer)
         {
-            case 1: winText.color = PlayerControllers.Color1; break;
-            case 2: winText.color = PlayerControllers.Color2; break;
-            case 3: winText.color = PlayerControllers.Color3; break;
-            case 4: winText.color = PlayerControllers.Color4; break;
+            case 1: winText.color = PlayerControllers.Color1; color = PlayerControllers.Color1Name; break;
+            case 2: winText.color = PlayerControllers.Color2; color = PlayerControllers.Color2Name; break;
+            case 3: winText.color = PlayerControllers.Color3; color = PlayerControllers.Color3Name; break;
+            case 4: winText.color = PlayerControllers.Color4; color = PlayerControllers.Color4Name; break;
         }
-        winText.text = "Player " + wonPlayer.ToString() + " Won!";
+        winText.text = color + " Won!";
         StartCoroutine(delayReset());
 
         for (int i = 0; i < numPlayers; i++)
