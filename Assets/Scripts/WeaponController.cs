@@ -14,6 +14,7 @@ public class WeaponController : MonoBehaviour
 	public float fuel = 100;
 	int consume_rate = 90;		//higher is faster
 	int recharge_rate = 70;		//lower is slower
+	int air_charge_rate = 70, ground_charge_rate = 150;
 
 	Rigidbody2D rb;
 	float x, y;
@@ -56,10 +57,16 @@ public class WeaponController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		if (transform.parent.parent.GetComponent<UnityStandardAssets._2D.PlatformerCharacter2D> ().is_grounded()) {
+			recharge_rate = ground_charge_rate;
+		} else {
+			recharge_rate = air_charge_rate;
+		}
+
 		if (GetComponentInParent<ArmRotation> ().controller == null || GetComponentInParent<Animator>().GetBool("Dead") == true) {
 			return;
 		}
-
+			
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
 
 		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasReleased || GetComponentInParent<ArmRotation> ().controller.RightTrigger.WasReleased) {
