@@ -169,20 +169,25 @@ public class WeaponController : MonoBehaviour
         foreach (var hit in hits)
         {
 			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
-            if (hit.rigidbody != null && dist.magnitude > 0) {
-				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
-					//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
-					if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
-					}
+			// Stop when colliding with walls and ground
+			if (hit.collider.gameObject.tag != "wall") {
+				
+				if (hit.rigidbody != null && dist.magnitude > 0) {
+					if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject) {
+						//hit.collider.attachedRigidbody.AddForce (dist.normalized * (power * 10 / (2 * dist.magnitude)));
 
-					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
-						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
-						//Debug.Log (hit.collider.tag);
+						if (hit.collider.gameObject.GetComponent<Inventory> () == null) {
+							hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
+						}
+
+						if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
+							hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 300, dist.normalized.y * 50));
+							//Debug.Log (hit.collider.tag);
+						}
 					}
 				}
-            }
+			}
         }
 			
     }

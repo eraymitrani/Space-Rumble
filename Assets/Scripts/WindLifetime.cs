@@ -11,6 +11,7 @@ public class WindLifetime : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lifetime = Random.Range (0.25f, 0.35f);
+		//Destroy (this.gameObject, 2);
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,17 @@ public class WindLifetime : MonoBehaviour {
 			if (timer >= lifetime) {
 				Destroy (gameObject);
 			}
+		}
+	}
+
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.tag == "wind pixel") {
+			Debug.Log ("colliding");
+
+		}
+		if (other.gameObject.tag == "wall") {
+			Destroy (this.gameObject);
 		}
 	}
 }
