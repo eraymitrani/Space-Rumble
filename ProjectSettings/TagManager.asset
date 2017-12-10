@@ -12,6 +12,7 @@ TagManager:
   - space rock
   - powerup
   - spike
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - meteor
   - space rock
   - black hole
-  - 
+  - wind pixel
   - 
   - 
   - 
