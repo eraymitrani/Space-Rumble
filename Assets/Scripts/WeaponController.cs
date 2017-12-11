@@ -171,12 +171,12 @@ public class WeaponController : MonoBehaviour
 		foreach (var test in test_hits) {
 			if (test.collider.gameObject != gameObject && test.collider.gameObject != transform.parent.parent.gameObject) {
 				if (test.collider.tag == "wall") {
-					Debug.Log (test.collider.tag);
+					//Debug.Log (test.collider.tag);
 					//return;
 					hit_wall_first = true;
 					break;
 				} else if (test.collider.tag == "Player" || test.collider.tag == "crate") {
-					Debug.Log (test.collider.tag);
+					//Debug.Log (test.collider.tag);
 					hit_wall_first = false;
 					break;
 				}
@@ -248,13 +248,13 @@ public class WeaponController : MonoBehaviour
 		foreach (var test in test_hits) {
 			if (test.collider.gameObject != gameObject && test.collider.gameObject != transform.parent.parent.gameObject) {
 				if (test.collider.tag == "wall") {
-					Debug.Log (test.collider.tag);
+					//Debug.Log (test.collider.tag);
 					//return;
 					hit_wall_first = true;
 					break;
 				} else if (test.collider.tag == "Player" || test.collider.tag == "crate") {
 					Debug.Log (test.collider.tag);
-					hit_wall_first = false;
+					//hit_wall_first = false;
 					break;
 				}
 			}

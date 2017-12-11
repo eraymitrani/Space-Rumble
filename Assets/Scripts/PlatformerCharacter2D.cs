@@ -101,11 +101,11 @@ namespace UnityStandardAssets._2D
 
 			//this isn't great, but it does one-hit-kill
 			if (transform.position.y < -5 && killOffscreen) {
-				GetComponent<Inventory> ().Damage (100);
+				GetComponent<Inventory> ().Damage (999);
 			}
 			//checks left and right
 			if (Mathf.Abs (transform.position.x) > 13.5f && killOffscreen) {
-				GetComponent<Inventory> ().Damage (100);
+				GetComponent<Inventory> ().Damage (999);
 			}
 
 			if(m_Rigidbody2D.velocity.magnitude > clamp_speed){

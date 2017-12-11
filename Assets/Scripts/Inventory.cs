@@ -66,6 +66,8 @@ public class Inventory : MonoBehaviour
 			Debug.DrawRay (transform.position, 5 * Vector3.up);
 
 			gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+			//GetComponentInChildren<CircleCollider2D> ().enabled = true;
+			//XXX
 
 			immov_timer += Time.deltaTime;
 			if (immov_timer >= immov_time) {
@@ -81,7 +83,9 @@ public class Inventory : MonoBehaviour
 				}
 			}
 		} else {
-			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+			gameObject.GetComponent<SpriteRenderer> ().enabled = false;	
+			//GetComponentInChildren<CircleCollider2D> ().enabled = false;
+			//XXX
 		}
 	}
 
@@ -98,6 +102,16 @@ public class Inventory : MonoBehaviour
 
     public void Damage(int dmg)
     {
+		
+		
+		if (isImmovable || is_powered_up) {
+			if (dmg == 999) {
+				//ignore, offscreen kill
+			} else {
+				return;
+			}
+		}
+
         currentHP -= dmg;
         isStun = true;
         m_Anim.SetBool("DamageTaken", true);
