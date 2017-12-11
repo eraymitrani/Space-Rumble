@@ -69,7 +69,8 @@ public class WeaponController : MonoBehaviour
 			
 		//if (Input.GetKeyDown("joystick 1 button 1") || Input.GetKeyDown("s"))
 
-		if (GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasReleased || GetComponentInParent<ArmRotation> ().controller.RightTrigger.WasReleased) {
+		if ((GetComponentInParent<ArmRotation> ().controller.LeftTrigger.WasPressed  && fuel > 33) || 
+			GetComponentInParent<ArmRotation> ().controller.RightTrigger.WasReleased) {
 			waiting = true;
 		}
 		if (waiting) {
@@ -125,6 +126,8 @@ public class WeaponController : MonoBehaviour
 
     void Shoot()
     {
+		bool hit_wall_first = false;
+
 		do_shoot = false;
 		if (!is_powered_up) {
 			fuel -= Time.deltaTime * consume_rate;
@@ -162,13 +165,33 @@ public class WeaponController : MonoBehaviour
 			rb.AddForce(angle * -45, ForceMode2D.Force);
 		}
 
+		RaycastHit2D[] test_hits = Physics2D.RaycastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), angle, 7f, toHitMask);
+		Debug.DrawRay (fireLoc.position, 7 * angle);
+
+		foreach (var test in test_hits) {
+			if (test.collider.gameObject != gameObject && test.collider.gameObject != transform.parent.parent.gameObject) {
+				if (test.collider.tag == "wall") {
+					Debug.Log (test.collider.tag);
+					//return;
+					hit_wall_first = true;
+					break;
+				} else if (test.collider.tag == "Player" || test.collider.tag == "crate") {
+					Debug.Log (test.collider.tag);
+					hit_wall_first = false;
+					break;
+				}
+			}
+		}
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
 		Debug.DrawRay (fireLoc.position, 5 * angle);
 
-        foreach (var hit in hits)
-        {
+		foreach (var hit in hits) {
 			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
+
+			if (hit.collider.gameObject.tag == "mid_wall") {
+				return;
+			}
 
 			// Stop when colliding with walls and ground
 			if (hit.collider.gameObject.tag != "wall") {
@@ -187,12 +210,17 @@ public class WeaponController : MonoBehaviour
 						}
 					}
 				}
-			}
-        }
+			} 
+//			} else if(hit_wall_first){
+//				return;
+//			}
+		} 
 			
     }
 
 	void Burst(){
+		bool hit_wall_first = false;
+
 		do_burst = false;
 		if (fuel < 33) {
 			return;
@@ -214,7 +242,23 @@ public class WeaponController : MonoBehaviour
 			rb.AddForce (angle * -800);
 		}
 
+		RaycastHit2D[] test_hits = Physics2D.RaycastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), angle, 7f, toHitMask);
+		Debug.DrawRay (fireLoc.position, 7 * angle);
 
+		foreach (var test in test_hits) {
+			if (test.collider.gameObject != gameObject && test.collider.gameObject != transform.parent.parent.gameObject) {
+				if (test.collider.tag == "wall") {
+					Debug.Log (test.collider.tag);
+					//return;
+					hit_wall_first = true;
+					break;
+				} else if (test.collider.tag == "Player" || test.collider.tag == "crate") {
+					Debug.Log (test.collider.tag);
+					hit_wall_first = false;
+					break;
+				}
+			}
+		}
 
 
 		RaycastHit2D[] hits = Physics2D.CircleCastAll (new Vector2 (fireLoc.position.x, fireLoc.position.y), 2f,  angle , 5f, toHitMask);
@@ -225,6 +269,10 @@ public class WeaponController : MonoBehaviour
 		foreach (var hit in hits) {
 			Vector2 dist = new Vector2 (hit.point.x - fireLoc.position.x, hit.point.y - fireLoc.position.y);
 
+			if (hit.collider.gameObject.tag == "mid_wall") {
+				return;
+			}
+
 			if (hit.rigidbody != null && dist.magnitude > 0) {
 				if (hit.collider.gameObject != gameObject && hit.collider.gameObject != transform.parent.parent.gameObject 
 					&& hit.collider.gameObject != transform.parent.gameObject) {
@@ -233,7 +281,7 @@ public class WeaponController : MonoBehaviour
 						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
 					}
 
-					if (!hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
+					if (hit.collider.gameObject.GetComponent<Inventory> () != null && !hit.collider.gameObject.GetComponent<Inventory> ().isImmovable) {
 						hit.collider.attachedRigidbody.AddForce (new Vector2 (dist.normalized.x * 5000, dist.normalized.y * 500));
 					}
 				}

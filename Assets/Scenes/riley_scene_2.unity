@@ -1703,7 +1703,7 @@ Transform:
   - {fileID: 1270512205}
   - {fileID: 1971146408}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &596499815
 BoxCollider2D:
@@ -3015,7 +3015,7 @@ Transform:
   - {fileID: 1894191381}
   - {fileID: 1126657389}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &965594644
 Rigidbody2D:
@@ -3472,7 +3472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1068956908
 MonoBehaviour:
@@ -3659,7 +3659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1070351421
 Prefab:
@@ -7376,6 +7376,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 50114409873052354, guid: 3975d9fef139a4b87bb67324102a83ae,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3975d9fef139a4b87bb67324102a83ae, type: 2}
   m_IsPrefabParent: 0
@@ -7662,7 +7667,7 @@ GameObject:
   - component: {fileID: 2134616801}
   m_Layer: 0
   m_Name: GameObject (16)
-  m_TagString: ground
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

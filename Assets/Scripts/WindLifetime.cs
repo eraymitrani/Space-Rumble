@@ -30,7 +30,7 @@ public class WindLifetime : MonoBehaviour {
 			Debug.Log ("colliding");
 
 		}
-		if (other.gameObject.tag == "wall") {
+		if (other.gameObject.tag == "wall" || other.gameObject.tag == "crate" || other.gameObject.tag == "mid_wall") {
 			Destroy (this.gameObject);
 		}
 	}
