@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731319, g: 0.38074926, b: 0.35872564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 212333919}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -912,7 +912,7 @@ GameObject:
   - component: {fileID: 237410507}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: wall
+  m_TagString: mid_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +928,7 @@ Transform:
   m_LocalScale: {x: 360, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1326267930}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &237410507
 BoxCollider2D:
@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 270991426}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1477,6 +1477,10 @@ Prefab:
     - target: {fileID: 5000000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
       propertyPath: m_Mass
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_TagString
+      value: crate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
@@ -1927,7 +1931,7 @@ Transform:
   m_LocalScale: {x: 360, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1326267930}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &381595688
 BoxCollider2D:
@@ -3038,6 +3042,10 @@ Prefab:
     - target: {fileID: 5000000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
       propertyPath: m_Mass
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_TagString
+      value: crate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
@@ -4850,7 +4858,7 @@ GameObject:
   - component: {fileID: 964258715}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5556,7 +5564,7 @@ GameObject:
   - component: {fileID: 1099495254}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: wall
+  m_TagString: mid_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6137,6 +6145,10 @@ Prefab:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_TagString
+      value: crate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
   m_IsPrefabParent: 0
@@ -6712,9 +6724,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1741939851}
   - {fileID: 237410506}
   - {fileID: 381595687}
-  - {fileID: 1741939851}
   - {fileID: 1099495253}
   - {fileID: 861865852}
   - {fileID: 398251027}
@@ -8490,7 +8502,7 @@ Transform:
   m_LocalScale: {x: 360, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1326267930}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1741939852
 BoxCollider2D:
@@ -9492,7 +9504,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1711999212
+  randomSeed: -822116524
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12842,6 +12854,10 @@ Prefab:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_TagString
+      value: crate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
   m_IsPrefabParent: 0
@@ -12997,7 +13013,7 @@ GameObject:
   - component: {fileID: 1917275479}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14120,6 +14136,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4694251001538536, guid: 3975d9fef139a4b87bb67324102a83ae, type: 2}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50114409873052354, guid: 3975d9fef139a4b87bb67324102a83ae,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50114409873052354, guid: 3975d9fef139a4b87bb67324102a83ae,
+        type: 2}
+      propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
