@@ -74,12 +74,6 @@ namespace UnityStandardAssets._2D
 			if (other.gameObject.tag == "hazard" || other.gameObject.tag == "spike" ) {
 				inv.Damage (1);
 			    Instantiate(a, transform.position, Quaternion.identity);
-
-                if (other.gameObject.tag == "spike")
-			    {
-			        Instantiate(a, transform.position, Quaternion.identity);
-
-                }
             }
 		}
         private void FixedUpdate()
